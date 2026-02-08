@@ -50,7 +50,7 @@ export default function Contact() {
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
           Ready to <span className="text-neonCyan">Initialize?</span>
         </h2>
-        <p className="text-gray-400">Execute the protocol below to start your project.</p>
+        <p className="text-gray-400">Execute the protocol below to contact us or email us on contact@aiwrapper.tech</p>
       </div>
 
       <motion.div 
@@ -132,7 +132,7 @@ export default function Contact() {
               disabled={loading}
               className="mt-4 group relative inline-flex items-center justify-center gap-2 px-8 py-3 bg-white/5 border border-white/10 rounded hover:bg-neonCyan/10 hover:border-neonCyan/50 transition-all duration-300 text-white disabled:opacity-50"
             >
-              <span>{loading ? "TRANSMITTING..." : "EXECUTE_TRANSMISSION"}</span>
+              <span>{loading ? "CONTACTING..." : "EXECUTE_CONTACT"}</span>
               <FaPaperPlane className={`text-xs ${!loading && "group-hover:translate-x-1 transition-transform"}`} />
             </button>
 

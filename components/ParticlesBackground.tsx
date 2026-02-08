@@ -21,11 +21,31 @@ const ParticlesBackground = () => {
       background: { color: { value: "transparent" } },
       fpsLimit: 120,
       interactivity: {
+        // FIX: This tells particles to listen to events globally (even over text)
+        detectsOn: "window", 
         events: {
-          onHover: { enable: true, mode: "grab" },
+          onHover: { 
+            enable: true, 
+            mode: "grab" // This creates the connecting lines
+          },
+          // BONUS: Add a click effect (tap on mobile) for extra feedback
+          onClick: {
+            enable: true,
+            mode: "push"
+          },
+          resize: {
+             enable: true,
+             delay: 0.5
+          }
         },
         modes: {
-          grab: { distance: 140, links: { opacity: 1 } },
+          grab: { 
+            distance: 140, 
+            links: { opacity: 1 } 
+          },
+          push: {
+            quantity: 4 // Adds 4 particles when you tap
+          }
         },
       },
       particles: {
@@ -38,7 +58,10 @@ const ParticlesBackground = () => {
           width: 1,
         },
         move: { enable: true, speed: 1 },
-        number: { density: { enable: true, width: 800, height: 800 }, value: 80 },
+        number: { 
+          density: { enable: true, width: 800, height: 800 }, 
+          value: 80 
+        },
         opacity: { value: 0.5 },
         size: { value: { min: 1, max: 3 } },
       },

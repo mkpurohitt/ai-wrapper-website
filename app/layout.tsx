@@ -7,7 +7,7 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 // 1. GLOBAL SEO CONFIGURATION
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aiwrapper.in"), // REPLACE THIS LATER with real domain
+  metadataBase: new URL("https://aiwrapper.tech"), // REPLACE THIS LATER with real domain
   title: {
     default: "AI Wrapper | Custom AI Software & Automation Agency",
     template: "%s | AI Wrapper"
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://aiwrapper.in",
+    url: "https://aiwrapper.tech",
     title: "AI Wrapper | Elite AI Software Solutions",
     description: "We build custom AI agents and softwares that drive business growth.",
     siteName: "AI Wrapper",

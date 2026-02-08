@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/admin", "/api/projects"], // Keep Admin & API hidden
     },
-    sitemap: "https://aiwrapper.in/sitemap.xml", // REPLACE with real domain later
+    sitemap: "https://aiwrapper.tech/sitemap.xml", // REPLACE with real domain later
   };
 }

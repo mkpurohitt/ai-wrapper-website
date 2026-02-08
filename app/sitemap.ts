@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://aiwrapper.in"; // REPLACE with real domain later
+  const baseUrl = "https://aiwrapper.tech"; // REPLACE with real domain later
 
   return [
     {

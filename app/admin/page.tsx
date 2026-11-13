@@ -1,196 +1,187 @@
 "use client";
 import { useState } from "react";
-import { FaCloudUploadAlt, FaLock } from "react-icons/fa";
+import { workCategories } from "@/lib/site";
 
-// YOUR FULL SERVICE LIST
-const CATEGORIES = [
-  "Web Development",
-  "App Development",
-  "Custom Software",
-  "Automation",
-  "AI Agents",
-  "ML Integration & Data Science"
-];
+const input =
+  "w-full border-b border-ink/25 bg-transparent py-3 outline-none transition-colors focus:border-ember";
+
+const emptyForm = {
+  title: "",
+  category: workCategories[0],
+  description: "",
+  techStack: "",
+  githubLink: "",
+  liveLink: "",
+};
 
 export default function AdminPage() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [imageFile, setImageFile] = useState<File | null>(null);
-  
-  const [formData, setFormData] = useState({
-    title: "",
-    category: CATEGORIES[0], // Default to first option
-    description: "",
-    techStack: "",
-    githubLink: "",
-    liveLink: "",
-  });
+  const [notice, setNotice] = useState<{ ok: boolean; text: string } | null>(null);
+  const [formData, setFormData] = useState(emptyForm);
 
-  const handleLogin = () => {
-    // Basic UI check. Real security is server-side.
-    if (password) setIsAuthenticated(true);
-  };
+  const set = (key: keyof typeof emptyForm) => (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => setFormData((f) => ({ ...f, [key]: e.target.value }));
 
-  const uploadImage = async () => {
-    if (!imageFile) return null;
-
+  // The password is verified server-side when a project is published.
+  const uploadImage = async (): Promise<string> => {
+    if (!imageFile) throw new Error("Please choose an image.");
     const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
     const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
-
-    // DEBUGGING: Check Console (F12) to see if these print!
-    console.log("Attempting Upload...");
-    console.log("Cloud Name:", cloudName);
-    console.log("Preset:", uploadPreset);
-
     if (!cloudName || !uploadPreset) {
-      alert("MISSING KEYS: Check your .env.local file. Cloud Name or Preset is empty.");
-      return null;
+      throw new Error("Cloudinary is not configured. Check the environment variables.");
     }
-    
     const data = new FormData();
     data.append("file", imageFile);
-    data.append("upload_preset", uploadPreset); 
-    data.append("cloud_name", cloudName);
-
-    try {
-      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-        method: "POST",
-        body: data,
-      });
-      
-      const file = await res.json();
-      
-      if (!res.ok) {
-        console.error("Cloudinary Error:", file);
-        alert(`Cloudinary Error: ${file.error?.message}`);
-        return null;
-      }
-
-      console.log("Upload Success:", file.secure_url);
-      return file.secure_url;
-
-    } catch (error) {
-      console.error("Network Error:", error);
-      alert("Network Error: Could not connect to Cloudinary.");
-      return null;
-    }
+    data.append("upload_preset", uploadPreset);
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+      method: "POST",
+      body: data,
+    });
+    const file = await res.json();
+    if (!res.ok) throw new Error(file.error?.message || "Image upload failed.");
+    return file.secure_url;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
-    const imageUrl = await uploadImage();
-    if (!imageUrl) {
-      setLoading(false);
-      return; // Stop if image failed
-    }
-
-    const projectPayload = {
-      ...formData,
-      image: imageUrl,
-      techStack: formData.techStack.split(",").map((t) => t.trim()),
-      password: password, 
-    };
-
-    const res = await fetch("/api/projects", {
-      method: "POST",
-      body: JSON.stringify(projectPayload),
-      headers: { "Content-Type": "application/json" },
-    });
-
-    const result = await res.json();
-
-    if (result.success) {
-      alert("Project Uploaded Successfully!");
-      setFormData({ 
-        title: "", 
-        category: CATEGORIES[0], 
-        description: "", 
-        techStack: "", 
-        githubLink: "", 
-        liveLink: "" 
+    setNotice(null);
+    try {
+      const image = await uploadImage();
+      const res = await fetch("/api/projects", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          image,
+          techStack: formData.techStack
+            .split(",")
+            .map((t) => t.trim())
+            .filter(Boolean),
+          password,
+        }),
       });
+      const result = await res.json();
+      if (!result.success) throw new Error(result.error || "Publishing failed.");
+      setFormData(emptyForm);
       setImageFile(null);
-    } else {
-      alert("Database Upload Failed: " + result.error);
+      setNotice({ ok: true, text: "Project published." });
+    } catch (err) {
+      setNotice({ ok: false, text: err instanceof Error ? err.message : "Something went wrong." });
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
-  if (!isAuthenticated) {
+  if (!unlocked) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="p-8 bg-white/5 border border-white/10 rounded-xl flex flex-col gap-4 w-80">
-          <h2 className="text-white text-xl font-bold flex items-center gap-2">
-            <FaLock className="text-neonCyan" /> Admin Access
-          </h2>
-          <input 
-            type="password" 
-            placeholder="Enter Admin Password" 
-            className="p-3 bg-black border border-white/20 rounded text-white"
+      <section className="shell flex min-h-[90svh] items-center justify-center pt-[4.5rem]">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (password) setUnlocked(true);
+          }}
+          className="w-full max-w-sm"
+        >
+          <p className="eyebrow text-stone">Admin</p>
+          <h1 className="display mt-4 text-5xl">Sign in</h1>
+          <input
+            type="password"
+            placeholder="Admin password"
+            aria-label="Admin password"
+            className={`${input} mt-8`}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button onClick={handleLogin} className="bg-neonCyan text-black font-bold py-2 rounded hover:bg-cyan-400">
-            Unlock
+          <button
+            type="submit"
+            className="mt-8 w-full rounded-full bg-ink py-3.5 font-medium text-paper transition-colors hover:bg-ember"
+          >
+            Continue
           </button>
-        </div>
-      </div>
+        </form>
+      </section>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0F] p-8 md:p-20 text-white">
-      <h1 className="text-3xl font-bold mb-8 text-neonCyan">Upload New Project</h1>
-      <form onSubmit={handleSubmit} className="max-w-2xl bg-white/5 p-8 rounded-2xl border border-white/10 space-y-6">
-        
-        {/* Title & Category */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm text-gray-400 mb-1">Project Title</label>
-            <input required className="bg-black/50 border border-white/10 rounded p-3 w-full outline-none focus:border-neonCyan" value={formData.title} onChange={(e) => setFormData({...formData, title: e.target.value})} />
-          </div>
-          <div>
-            <label className="block text-sm text-gray-400 mb-1">Category</label>
-            <select 
-              className="bg-black/50 border border-white/10 rounded p-3 w-full outline-none focus:border-neonCyan" 
-              value={formData.category} 
-              onChange={(e) => setFormData({...formData, category: e.target.value})}
-            >
-              {CATEGORIES.map(cat => (
-                <option key={cat} value={cat}>{cat}</option>
+    <section className="shell max-w-3xl pb-24 pt-36 md:pt-44">
+      <p className="eyebrow text-stone">Admin</p>
+      <h1 className="display mt-4 text-5xl md:text-6xl">Publish a project</h1>
+
+      <form onSubmit={handleSubmit} className="mt-12 space-y-8">
+        <div className="grid gap-8 md:grid-cols-2">
+          <label className="block">
+            <span className="eyebrow text-stone">Project title</span>
+            <input required className={input} value={formData.title} onChange={set("title")} />
+          </label>
+          <label className="block">
+            <span className="eyebrow text-stone">Category</span>
+            <select className={input} value={formData.category} onChange={set("category")}>
+              {workCategories.map((cat) => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
               ))}
             </select>
-          </div>
+          </label>
         </div>
 
-        <div>
-            <label className="block text-sm text-gray-400 mb-1">Description</label>
-            <textarea required rows={4} className="bg-black/50 border border-white/10 rounded p-3 w-full outline-none focus:border-neonCyan" value={formData.description} onChange={(e) => setFormData({...formData, description: e.target.value})} />
+        <label className="block">
+          <span className="eyebrow text-stone">Description</span>
+          <textarea
+            required
+            rows={4}
+            className={`${input} resize-none`}
+            value={formData.description}
+            onChange={set("description")}
+          />
+        </label>
+
+        <label className="block">
+          <span className="eyebrow text-stone">Tools and platforms (comma separated)</span>
+          <input required className={input} value={formData.techStack} onChange={set("techStack")} />
+        </label>
+
+        <label className="relative block cursor-pointer border border-dashed border-ink/30 p-8 text-center transition-colors hover:border-ink">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setImageFile(e.target.files?.[0] || null)}
+            className="absolute inset-0 cursor-pointer opacity-0"
+          />
+          <span className="text-stone">{imageFile ? imageFile.name : "Choose a cover image"}</span>
+        </label>
+
+        <div className="grid gap-8 md:grid-cols-2">
+          <label className="block">
+            <span className="eyebrow text-stone">Repository URL (optional)</span>
+            <input className={input} value={formData.githubLink} onChange={set("githubLink")} />
+          </label>
+          <label className="block">
+            <span className="eyebrow text-stone">Live URL (optional)</span>
+            <input className={input} value={formData.liveLink} onChange={set("liveLink")} />
+          </label>
         </div>
 
-        <div>
-            <label className="block text-sm text-gray-400 mb-1">Tech Stack (e.g. Next.js, Python)</label>
-            <input required className="bg-black/50 border border-white/10 rounded p-3 w-full outline-none focus:border-neonCyan" value={formData.techStack} onChange={(e) => setFormData({...formData, techStack: e.target.value})} />
-        </div>
-        
-        <div className="border-2 border-dashed border-white/20 rounded-xl p-6 text-center cursor-pointer relative hover:border-neonCyan transition-colors">
-          <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)} className="absolute inset-0 opacity-0 cursor-pointer" />
-          <FaCloudUploadAlt className="text-4xl text-gray-500 mx-auto mb-2" />
-          <p className="text-gray-400">{imageFile ? imageFile.name : "Click to upload image"}</p>
-        </div>
+        {notice && (
+          <p role="status" className={notice.ok ? "text-ink" : "text-ember"}>
+            {notice.text}
+          </p>
+        )}
 
-        <div className="grid grid-cols-2 gap-4">
-          <input placeholder="GitHub URL" className="bg-black/50 border border-white/10 rounded p-3 w-full outline-none focus:border-neonCyan" value={formData.githubLink} onChange={(e) => setFormData({...formData, githubLink: e.target.value})} />
-          <input placeholder="Live Link" className="bg-black/50 border border-white/10 rounded p-3 w-full outline-none focus:border-neonCyan" value={formData.liveLink} onChange={(e) => setFormData({...formData, liveLink: e.target.value})} />
-        </div>
-
-        <button disabled={loading} type="submit" className="w-full bg-neonCyan text-black font-bold py-4 rounded-xl hover:bg-white transition-colors disabled:opacity-50">
-          {loading ? "Uploading..." : "Publish Project"}
+        <button
+          disabled={loading}
+          type="submit"
+          className="w-full rounded-full bg-ink py-4 font-medium text-paper transition-colors hover:bg-ember disabled:opacity-60"
+        >
+          {loading ? "Publishing…" : "Publish project"}
         </button>
       </form>
-    </div>
+    </section>
   );
 }

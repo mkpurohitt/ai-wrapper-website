@@ -1,12 +1,14 @@
 import { MetadataRoute } from "next";
+import { site } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
+    // All crawlers are welcome, including AI crawlers (GPTBot, ClaudeBot, PerplexityBot).
     rules: {
-      userAgent: "*", // Allow ALL bots (Google, Bing, GPTBot, etc.)
+      userAgent: "*",
       allow: "/",
-      disallow: ["/admin", "/api/projects"], // Keep Admin & API hidden
+      disallow: ["/admin", "/api/"],
     },
-    sitemap: "https://aiwrapper.tech/sitemap.xml", // REPLACE with real domain later
+    sitemap: `${site.url}/sitemap.xml`,
   };
 }

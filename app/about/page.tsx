@@ -1,148 +1,138 @@
-"use client";
-import { motion } from "framer-motion";
-import FloatingDock from "@/components/FloatingDock";
-import Footer from "@/components/Footer";
-import { FaBrain, FaCode, FaRocket } from "react-icons/fa";
+import type { Metadata } from "next";
+import Contact from "@/components/Contact";
+import Reveal from "@/components/Reveal";
+import { Eyebrow } from "@/components/ui";
+import { labs, principles } from "@/lib/site";
 
-const stats = [
-  { label: "AI Models Integrated", value: "50+" },
-  { label: "Efficiency Boost", value: "400%" },
-  { label: "Projects Deployed", value: "25+" },
-  { label: "Human Error Reduced", value: "99%" },
-];
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "AI Wrapper is a Mumbai-based new-age services company combining AI automation, model training and modern digital marketing in one team.",
+  alternates: { canonical: "/about" },
+};
 
 const timeline = [
-  { year: "2024", title: "The Inception", desc: "AI Wrapper was founded with a single mission: To bridge the gap between complex LLMs and practical business software." },
-  { year: "2025", title: "The First project", desc: "Delieverd a data dashboard project to the firm and increase the productivity by 3x and reduced error rate by 80 percent many more projects." },
-  { year: "2026", title: "Expansion", desc: "Scaled to full-stack AI development, offering custom services and products for enterprise clients and customers." },
-  { year: "FUTURE", title: "Singularity", desc: "Building 'AI Wrappers' - the future of AI development." },
+  {
+    year: "2024",
+    title: "Founded in Mumbai",
+    body: "AI Wrapper started with one aim: close the gap between what AI models can do and what businesses actually get out of them.",
+  },
+  {
+    year: "2025",
+    title: "First client systems",
+    body: "We delivered our first production work — data dashboards and automation that took manual effort out of day-to-day operations.",
+  },
+  {
+    year: "2026",
+    title: "A new-age services company",
+    body: "We brought AI automation, model training and modern marketing — SEO, AEO, GEO and paid media — together under one roof.",
+  },
 ];
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-deepVoid selection:bg-neonCyan selection:text-black pb-20">
-      
-      {/* 1. Hero Section */}
-      <section className="pt-32 pb-16 px-4 text-center relative overflow-hidden">
-        {/* Background Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-neonViolet/10 rounded-full blur-[120px] pointer-events-none" />
-        
-        <motion.span 
-          initial={{ opacity: 0 }} 
-          animate={{ opacity: 1 }}
-          className="text-neonCyan font-mono tracking-widest uppercase text-sm"
-        >
-          // Our Philosophy
-        </motion.span>
-        
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl font-bold text-white mt-4 mb-6"
-        >
-          Architects of <span className="text-neonViolet">Intelligence</span>
-        </motion.h1>
-        
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed"
-        >
-          We are not just developers. We are synthesis engineers. We believe that 
-          <span className="text-white"> Code + AI </span> is the most powerful force in modern history.
-        </motion.p>
+    <>
+      <section className="shell pb-20 pt-40 md:pb-32 md:pt-56">
+        <Eyebrow className="text-stone">About</Eyebrow>
+        <h1 className="display mt-8 max-w-6xl text-6xl md:text-8xl lg:text-9xl">
+          We build the systems behind <em className="text-ember">modern growth.</em>
+        </h1>
       </section>
 
-      {/* 2. Stats Grid */}
-      <section className="max-w-6xl mx-auto px-4 mb-32">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="p-8 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/10 transition-colors"
-            >
-              <h3 className="text-4xl font-bold text-white mb-2">{stat.value}</h3>
-              <p className="text-xs font-mono text-gray-400 uppercase tracking-wider">{stat.label}</p>
-            </motion.div>
-          ))}
+      <section className="shell grid gap-10 border-t border-ink/15 py-20 md:grid-cols-12 md:py-32">
+        <div className="md:col-span-3">
+          <Eyebrow className="text-stone">Who we are</Eyebrow>
         </div>
+        <Reveal className="space-y-8 md:col-span-8">
+          <p className="display text-4xl leading-[1.1] md:text-5xl">
+            AI Wrapper is a services company for a world where customers ask machines for
+            recommendations and the best-run businesses are increasingly automated.
+          </p>
+          <div className="grid gap-8 leading-relaxed text-stone sm:grid-cols-2">
+            <p>
+              Most companies buy AI from one vendor and marketing from another, then try to make
+              the two talk. We think that split is the problem. The data that trains a model is the
+              same data that sharpens a campaign; the automation that saves an hour is what lets a
+              team act on a lead in minutes.
+            </p>
+            <p>
+              So we do both. A single team that automates operations, trains models on your data,
+              and makes your brand visible across search, social and AI assistants — and is
+              accountable for the result, not just the work.
+            </p>
+          </div>
+        </Reveal>
       </section>
 
-      {/* 3. The "Why Us" Split Section */}
-      <section className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center mb-32">
-        <div className="relative">
-           {/* Abstract Visual Representation */}
-           <div className="aspect-square rounded-2xl bg-gradient-to-br from-neonCyan/20 to-neonViolet/20 border border-white/10 flex items-center justify-center relative overflow-hidden">
-             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-10" />
-             <FaBrain className="text-9xl text-white/20 animate-pulse" />
-           </div>
-        </div>
-        
-        <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Human Creativity. <br/> Machine Precision.
-          </h2>
-          <div className="space-y-6">
-            <div className="flex gap-4">
-              <div className="p-3 bg-neonCyan/10 rounded-lg h-fit text-neonCyan"><FaCode /></div>
-              <div>
-                <h4 className="text-white font-bold text-lg">Clean Architecture</h4>
-                <p className="text-gray-400 text-sm">We don't rely solely on AI. We build robust, scalable codebases that AI enhances, not replaces.</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="p-3 bg-neonViolet/10 rounded-lg h-fit text-neonViolet"><FaRocket /></div>
-              <div>
-                <h4 className="text-white font-bold text-lg">Speed to Market</h4>
-                <p className="text-gray-400 text-sm">By using our proprietary AI wrappers, we deploy products 5x faster than traditional agencies.</p>
-              </div>
-            </div>
+      <section className="bg-ink text-paper">
+        <div className="shell grid gap-12 py-24 md:grid-cols-12 md:py-36">
+          <div className="md:col-span-4">
+            <Eyebrow className="text-ash">Principles</Eyebrow>
+            <h2 className="display mt-6 text-5xl md:text-6xl">What we hold ourselves to.</h2>
+          </div>
+          <div className="border-t border-paper/15 md:col-span-7 md:col-start-6">
+            {principles.map((p, i) => (
+              <Reveal
+                key={p.title}
+                className="grid gap-3 border-b border-paper/15 py-9 sm:grid-cols-12 sm:gap-6"
+              >
+                <p className="eyebrow pt-1.5 text-ember sm:col-span-1">0{i + 1}</p>
+                <div className="sm:col-span-11">
+                  <h3 className="text-2xl font-medium tracking-tight">{p.title}</h3>
+                  <p className="mt-3 max-w-xl leading-relaxed text-ash">{p.body}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 4. The Roadmap (Timeline) */}
-      <section className="max-w-3xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-white">The Roadmap</h2>
+      <section className="shell grid gap-12 py-24 md:grid-cols-12 md:py-36">
+        <div className="md:col-span-4">
+          <Eyebrow className="text-stone">Story so far</Eyebrow>
+          <h2 className="display mt-6 text-5xl md:text-6xl">Three years, one direction.</h2>
         </div>
-
-        <div className="relative border-l border-white/10 ml-6 md:ml-0 space-y-12">
-          {timeline.map((item, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative pl-12 md:pl-0"
-            >
-              {/* Dot on line */}
-              <div className="absolute left-[-5px] top-0 w-3 h-3 rounded-full bg-neonCyan shadow-[0_0_10px_#00F0FF]" />
-              
-              <div className="md:flex gap-8 items-start">
-                <div className="md:w-24 shrink-0 font-mono text-neonCyan font-bold text-xl mb-2 md:mb-0 md:text-right">
-                  {item.year}
+        <ol className="border-t border-ink/15 md:col-span-7 md:col-start-6">
+          {timeline.map((t) => (
+            <li key={t.year}>
+              <Reveal className="grid gap-3 border-b border-ink/15 py-9 sm:grid-cols-12 sm:gap-6">
+                <p className="display text-4xl text-ember sm:col-span-3">{t.year}</p>
+                <div className="sm:col-span-9">
+                  <h3 className="text-2xl font-medium tracking-tight">{t.title}</h3>
+                  <p className="mt-3 leading-relaxed text-stone">{t.body}</p>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            </motion.div>
+              </Reveal>
+            </li>
           ))}
+        </ol>
+      </section>
+
+      <section id="labs" className="bg-bone">
+        <div className="shell grid gap-12 py-24 md:grid-cols-12 md:py-32">
+          <div className="md:col-span-4">
+            <Eyebrow className="text-stone">Labs</Eyebrow>
+            <h2 className="display mt-6 text-5xl md:text-6xl">Products we are building.</h2>
+            <p className="mt-6 max-w-sm leading-relaxed text-stone">
+              Alongside client work, we build our own products. It keeps us honest about what it
+              takes to ship.
+            </p>
+          </div>
+          <ul className="border-t border-ink/15 md:col-span-7 md:col-start-6">
+            {labs.map((l) => (
+              <li
+                key={l.name}
+                className="grid gap-2 border-b border-ink/15 py-7 sm:grid-cols-12 sm:items-baseline sm:gap-6"
+              >
+                <h3 className="display text-3xl sm:col-span-4">{l.name}</h3>
+                <p className="leading-relaxed text-stone sm:col-span-5">{l.body}</p>
+                <p className="eyebrow text-stone sm:col-span-3 sm:text-right">{l.status}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* Footer & Dock */}
-      <div className="mt-32">
-        <Footer />
-      </div>
-      <FloatingDock />
-    </main>
+      <Contact />
+    </>
   );
 }

@@ -1,156 +1,161 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
-import FloatingDock from "@/components/FloatingDock";
-import Footer from "@/components/Footer";
-import { FaGithub, FaExternalLinkAlt, FaSpinner } from "react-icons/fa";
+import { useEffect, useMemo, useState } from "react";
+import Contact from "@/components/Contact";
+import { Arrow, ButtonLink, Eyebrow } from "@/components/ui";
 
-const categories = ["All", "Web Dev","App Dev", "Custom Software", "AI Agents", "Automation", "ML Integration"];
+type Project = {
+  _id: string;
+  title: string;
+  category?: string;
+  description?: string;
+  image?: string;
+  techStack?: string[];
+  githubLink?: string;
+  liveLink?: string;
+};
 
 export default function PortfolioPage() {
   const [filter, setFilter] = useState("All");
-  const [projects, setProjects] = useState<any[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // 1. FETCH DATA FROM API
   useEffect(() => {
-    async function fetchProjects() {
-      try {
-        const res = await fetch("/api/projects");
-        const data = await res.json();
-        if (data.success) {
-          setProjects(data.data);
-        }
-      } catch (error) {
-        console.error("Failed to fetch projects:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchProjects();
+    let active = true;
+    fetch("/api/projects")
+      .then((res) => res.json())
+      .then((data) => {
+        if (active && data.success && Array.isArray(data.data)) setProjects(data.data);
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+    return () => {
+      active = false;
+    };
   }, []);
 
-  // 2. FILTER LOGIC
-  const filteredProjects = filter === "All" 
-    ? projects 
-    : projects.filter((p: any) => p.category === filter);
+  const categories = useMemo(() => {
+    const found = Array.from(
+      new Set(projects.map((p) => p.category).filter((c): c is string => Boolean(c)))
+    );
+    return found.length > 1 ? ["All", ...found] : [];
+  }, [projects]);
+
+  const visible = filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <main className="min-h-screen bg-deepVoid selection:bg-neonCyan selection:text-black pb-20">
-      
-      {/* Header Section */}
-      <section className="pt-32 pb-16 px-4 text-center">
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl font-bold text-white mb-6"
-        >
-          Selected <span className="text-neonCyan">Works</span>
-        </motion.h1>
-        <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-          A collection of high-performance software, AI agents, and web platforms we have engineered.
+    <>
+      <section className="shell pb-14 pt-40 md:pb-20 md:pt-56">
+        <Eyebrow className="text-stone">Work</Eyebrow>
+        <h1 className="display mt-8 max-w-5xl text-6xl md:text-8xl lg:text-9xl">
+          Selected <em className="text-ember">work.</em>
+        </h1>
+        <p className="mt-10 max-w-2xl text-lg leading-relaxed text-stone md:text-xl">
+          Systems, models and campaigns we have built with our clients.
         </p>
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap justify-center gap-4 mt-10">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-6 py-2 rounded-full border transition-all duration-300 text-sm font-mono tracking-wider
-                ${filter === cat 
-                  ? "bg-neonCyan text-black border-neonCyan font-bold shadow-[0_0_15px_rgba(0,240,255,0.4)]" 
-                  : "bg-white/5 text-gray-400 border-white/10 hover:border-white/50 hover:text-white"
+        {categories.length > 0 && (
+          <div className="mt-12 flex flex-wrap gap-2.5">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                aria-pressed={filter === cat}
+                onClick={() => setFilter(cat)}
+                className={`rounded-full border px-4 py-2 text-sm transition-colors duration-300 ${
+                  filter === cat
+                    ? "border-ink bg-ink text-paper"
+                    : "border-ink/20 text-ink hover:border-ink"
                 }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </section>
-
-      {/* Projects Grid */}
-      <section className="max-w-7xl mx-auto px-4 min-h-[400px]">
-        
-        {/* Loading State */}
-        {loading ? (
-          <div className="flex flex-col items-center justify-center h-64 text-neonCyan">
-            <FaSpinner className="text-4xl animate-spin mb-4" />
-            <p className="font-mono text-sm tracking-widest">LOADING_DATABASE...</p>
+              >
+                {cat}
+              </button>
+            ))}
           </div>
-        ) : (
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <AnimatePresence mode='popLayout'>
-              {filteredProjects.map((project) => (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                  key={project._id || project.id}
-                  className="group relative rounded-2xl bg-white/5 border border-white/10 overflow-hidden hover:border-neonCyan/50 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full"
-                >
-                  {/* Project Image */}
-                  <div className="h-48 w-full relative overflow-hidden bg-black">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    
-                    {/* Overlay Buttons */}
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-sm">
-                      {project.githubLink && (
-                        <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full text-white hover:bg-neonCyan hover:text-black transition-colors" title="View Code">
-                          <FaGithub className="text-xl" />
-                        </a>
-                      )}
-                      {project.liveLink && (
-                        <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full text-white hover:bg-neonCyan hover:text-black transition-colors" title="Live Demo">
-                          <FaExternalLinkAlt className="text-xl" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex justify-between items-start mb-4">
-                      <span className="text-xs font-mono text-neonCyan border border-neonCyan/30 px-2 py-1 rounded bg-neonCyan/10">
-                        {project.category}
-                      </span>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-neonCyan transition-colors">
-                      {project.title}
-                    </h3>
-                    
-                    <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-                      {project.description}
-                    </p>
-
-                    {/* Dynamic Tech Stack Badges */}
-                    <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-white/5">
-                      {project.techStack && project.techStack.map((tech: string, index: number) => (
-                        <span key={index} className="text-[10px] font-mono border border-white/20 px-2 py-1 rounded text-gray-400 group-hover:border-neonCyan/30 group-hover:text-neonCyan transition-colors">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
         )}
       </section>
 
-      {/* Footer & Dock */}
-      <div className="mt-32">
-        <Footer />
-      </div>
-      <FloatingDock />
-    </main>
+      <section className="shell min-h-[20rem] pb-24 md:pb-40">
+        {loading ? (
+          <div className="grid gap-x-8 gap-y-14 md:grid-cols-2" aria-busy="true">
+            {[0, 1].map((n) => (
+              <div key={n} className="animate-pulse">
+                <div className="aspect-[4/3] bg-bone" />
+                <div className="mt-6 h-3 w-24 bg-bone" />
+                <div className="mt-4 h-8 w-2/3 bg-bone" />
+              </div>
+            ))}
+          </div>
+        ) : visible.length === 0 ? (
+          <div className="border-y border-ink/15 py-16 md:py-24">
+            <p className="display max-w-3xl text-4xl md:text-5xl">
+              Case studies are being prepared for publication.
+            </p>
+            <p className="mt-6 max-w-xl leading-relaxed text-stone">
+              In the meantime, we are happy to walk you through relevant work on a call.
+            </p>
+            <ButtonLink href="/contact" className="mt-9">
+              Request a walkthrough
+            </ButtonLink>
+          </div>
+        ) : (
+          <div className="grid gap-x-8 gap-y-16 md:grid-cols-2">
+            {visible.map((p) => {
+              const href = p.liveLink || p.githubLink;
+              return (
+                <article key={p._id} className="group">
+                  <div className="aspect-[4/3] overflow-hidden bg-bone">
+                    {p.image && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={p.image}
+                        alt={p.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-[1200ms] ease-expo group-hover:scale-[1.03]"
+                      />
+                    )}
+                  </div>
+                  <div className="mt-6 flex items-start justify-between gap-6">
+                    <div>
+                      {p.category && <p className="eyebrow text-stone">{p.category}</p>}
+                      <h2 className="display mt-3 text-4xl md:text-5xl">{p.title}</h2>
+                    </div>
+                    {href && (
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Open ${p.title}`}
+                        className="mt-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-ink/20 transition-colors duration-300 hover:border-ink hover:bg-ink hover:text-paper"
+                      >
+                        <Arrow />
+                      </a>
+                    )}
+                  </div>
+                  {p.description && (
+                    <p className="mt-4 max-w-xl leading-relaxed text-stone">{p.description}</p>
+                  )}
+                  {p.techStack && p.techStack.length > 0 && (
+                    <ul className="mt-5 flex flex-wrap gap-2">
+                      {p.techStack.map((t) => (
+                        <li
+                          key={t}
+                          className="rounded-full border border-ink/15 px-3 py-1 text-[0.8125rem]"
+                        >
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </article>
+              );
+            })}
+          </div>
+        )}
+      </section>
+
+      <Contact />
+    </>
   );
 }

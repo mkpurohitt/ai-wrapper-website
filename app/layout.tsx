@@ -1,30 +1,51 @@
-import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google"; // Keep your fonts
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { JsonLd } from "@/components/ui";
+import { services, site } from "@/lib/site";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
+const instrument = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
+  display: "swap",
+});
 
-// 1. GLOBAL SEO CONFIGURATION
+export const viewport: Viewport = {
+  themeColor: "#f4f1ea",
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aiwrapper.tech"), // REPLACE THIS LATER with real domain
+  metadataBase: new URL(site.url),
   title: {
-    default: "AI Wrapper | Custom AI Software & Automation Agency",
-    template: "%s | AI Wrapper"
+    default: "AI Wrapper — AI Automation, Model Training & New-Age Digital Marketing",
+    template: "%s — AI Wrapper",
   },
-  description: "Mumbai-based Tech and AI agency specializing in custom LLM agents, web and app development, and business automation. We build software that replaces manual work.",
+  description: site.description,
   keywords: [
-    "AI Agency Mumbai", 
-    "Custom AI Software",  
-    "Business Automation Services", 
-    "LLM Integration", 
-    "Web Development Mumbai",
-    "Next.js Developers",
-    "freelacing"
+    "AI automation agency",
+    "AI model training",
+    "LLM fine-tuning",
+    "generative engine optimisation",
+    "GEO agency",
+    "answer engine optimisation",
+    "AEO",
+    "SEO agency Mumbai",
+    "Meta Ads",
+    "Google Ads",
+    "ChatGPT Ads",
+    "performance marketing",
+    "social media marketing",
   ],
   authors: [{ name: "Mehul Purohit" }],
   creator: "Mehul Purohit",
-  publisher: "AI Wrapper",
+  publisher: site.name,
+  alternates: { canonical: "/" },
   robots: {
     index: true,
     follow: true,
@@ -39,37 +60,76 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://aiwrapper.tech",
-    title: "AI Wrapper | Elite AI Software Solutions",
-    description: "We build custom AI agents and softwares that drive business growth.",
-    siteName: "AI Wrapper",
-    images: [
-      {
-        url: "/og-image.png", // We will create this later
-        width: 1200,
-        height: 630,
-        alt: "AI Wrapper Agency Interface",
-      },
-    ],
+    url: site.url,
+    siteName: site.name,
+    title: "AI Wrapper — Be the answer. Automate the rest.",
+    description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Wrapper | Custom AI & Automation",
-    description: "Mumbai's premier AI development agency.",
-    images: ["/og-image.png"],
-    creator: "@yourhandle",
+    title: "AI Wrapper — Be the answer. Automate the rest.",
+    description: site.description,
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const organization = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${site.url}/#organization`,
+  name: site.name,
+  url: site.url,
+  email: site.email,
+  description: site.description,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Mumbai",
+    addressRegion: "Maharashtra",
+    addressCountry: "IN",
+  },
+  areaServed: "Worldwide",
+  knowsAbout: [
+    "AI automation",
+    "AI agents",
+    "AI model training",
+    "LLM fine-tuning",
+    "Search engine optimisation",
+    "Answer engine optimisation",
+    "Generative engine optimisation",
+    "Social media marketing",
+    "Meta Ads",
+    "Google Ads",
+    "ChatGPT Ads",
+    "Performance marketing",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Services",
+    itemListElement: services.map((s) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: s.name,
+        description: s.short,
+        url: `${site.url}/services/${s.slug}`,
+      },
+    })),
+  },
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${mono.variable} bg-deepVoid text-white antialiased`}>
-        {children}
+    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrument.variable}`}>
+      <body className="antialiased">
+        <JsonLd data={organization} />
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
+        >
+          Skip to content
+        </a>
+        <Header />
+        <main id="main">{children}</main>
+        <Footer />
       </body>
     </html>
   );

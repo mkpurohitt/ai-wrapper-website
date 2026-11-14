@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default:
-      "AI Wrapper — AI Automation, Premium Development & New-Age Digital Marketing",
-    template: "%s — AI Wrapper",
+      "AI Wrapper | AI Automation, Premium Development & New-Age Digital Marketing",
+    template: "%s | AI Wrapper",
   },
   description: site.description,
   keywords: [
@@ -76,12 +76,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: site.url,
     siteName: site.name,
-    title: "AI Wrapper — Be the answer. Automate the rest.",
+    title: "AI Wrapper | Be the answer. Automate the rest.",
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Wrapper — Be the answer. Automate the rest.",
+    title: "AI Wrapper | Be the answer. Automate the rest.",
     description: site.description,
   },
 };

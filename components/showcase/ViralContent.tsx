@@ -74,7 +74,7 @@ const formula = [
   ],
   [
     "Story",
-    "Real people, real stakes, a reason to watch to the end — not stock footage and a robot voice.",
+    "Real people, real stakes, a reason to watch to the end, not stock footage and a robot voice.",
   ],
   [
     "Native",

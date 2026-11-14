@@ -29,7 +29,7 @@ const ticker = [
 const channels = [
   {
     name: "Viral content and reels",
-    body: "Hook-first short-form video people watch to the end — not template AI clips.",
+    body: "Hook-first short-form video people watch to the end, not template AI clips.",
   },
   {
     name: "E-commerce marketing",
@@ -126,7 +126,7 @@ export default function Home() {
             </Link>
           ))}
           <p className="eyebrow self-baseline text-stone md:text-right">
-            Mumbai — Worldwide
+            Mumbai · Worldwide
           </p>
         </div>
       </section>
@@ -163,7 +163,7 @@ export default function Home() {
             AI made it easy to build the same website and post the same reel as
             everyone else.{" "}
             <span className="text-stone">
-              We use it the other way — to take the boring work off your team,
+              We use it the other way: to take the boring work off your team,
               so the things your customers actually see can be crafted,
               distinctive and worth sharing.
             </span>
@@ -214,7 +214,7 @@ export default function Home() {
                         key={c.title}
                         className="rounded-full border border-ink/15 px-3 py-1 text-[0.8125rem] text-ink"
                       >
-                        {c.title.split(" — ")[0]}
+                        {c.title.split(":")[0]}
                       </li>
                     ))}
                   </ul>
@@ -240,7 +240,7 @@ export default function Home() {
             </div>
             <div className="self-end md:col-span-4 md:col-start-9">
               <p className="leading-relaxed text-stone">
-                Websites, apps, custom software and e-commerce stores — with
+                Websites, apps, custom software and e-commerce stores, with
                 payments and delivery built in, and no platform commission on
                 every sale.
               </p>
@@ -281,7 +281,7 @@ export default function Home() {
               </h2>
             </div>
             <p className="self-end leading-relaxed text-ash md:col-span-4 md:col-start-9">
-              People still search — but more and more, an AI answers. We
+              People still search, but more and more, an AI answers. We
               optimise for all three surfaces, so your brand shows up whether
               someone types, taps or asks.
             </p>

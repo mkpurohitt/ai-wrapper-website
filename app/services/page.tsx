@@ -8,7 +8,7 @@ import { services } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "AI and Python automation, premium web, app, software and e-commerce development, and new-age digital marketing — viral content, SEO, AEO, GEO, Meta Ads, Google Ads and ChatGPT Ads.",
+    "AI and Python automation, premium web, app, software and e-commerce development, and new-age digital marketing: viral content, SEO, AEO, GEO, Meta Ads, Google Ads and ChatGPT Ads.",
   alternates: { canonical: "/services" },
 };
 
@@ -24,7 +24,7 @@ export default function ServicesPage() {
         <p className="mt-10 max-w-2xl text-lg leading-relaxed text-stone md:text-xl">
           Three practices that work as one. Automation gives your team time
           back. Development gives you a product that looks and works like a
-          premium brand. Marketing brings people to it — with content they share
+          premium brand. Marketing brings people to it with content they share
           and search that finds you wherever they ask.
         </p>
       </section>

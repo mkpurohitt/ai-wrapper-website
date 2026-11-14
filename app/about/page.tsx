@@ -20,12 +20,12 @@ const timeline = [
   {
     year: "2025",
     title: "First client systems",
-    body: "We delivered our first production work — data dashboards and automation that took manual effort out of day-to-day operations.",
+    body: "We delivered our first production work: data dashboards and automation that took manual effort out of day-to-day operations.",
   },
   {
     year: "2026",
     title: "A new-age services company",
-    body: "We brought AI automation, premium development and modern marketing — viral content, SEO, AEO, GEO and paid media — together under one roof.",
+    body: "We brought AI automation, premium development and modern marketing (viral content, SEO, AEO, GEO and paid media) together under one roof.",
   },
 ];
 
@@ -60,7 +60,7 @@ export default function AboutPage() {
             </p>
             <p>
               So we do all three. A single team that automates the boring work,
-              builds premium products you own, and makes content people share —
+              builds premium products you own, and makes content people share,
               and is accountable for the result, not just the work.
             </p>
           </div>

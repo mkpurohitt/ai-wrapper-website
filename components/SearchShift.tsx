@@ -42,7 +42,7 @@ const surfaces = [
     short: "AEO",
     name: "Answer engine optimisation",
     verb: "Answer",
-    body: "Be the direct answer in featured snippets, AI Overviews and voice results — before anyone scrolls.",
+    body: "Be the direct answer in featured snippets, AI Overviews and voice results, before anyone scrolls.",
     mock: (
       <div>
         <p className="font-mono text-[0.625rem] uppercase tracking-widest text-ash">

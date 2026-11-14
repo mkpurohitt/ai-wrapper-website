@@ -9,7 +9,7 @@ const rented = [
   ],
   [
     "Paid apps",
-    "Reviews, upsells, invoices and more — often each a monthly add-on",
+    "Reviews, upsells, invoices and more, often each a monthly add-on",
   ],
   [
     "Their checkout, their rules",
@@ -28,7 +28,7 @@ const owned = [
   ],
   [
     "Payments built in",
-    "Razorpay or Stripe — UPI, cards, wallets, net banking and COD",
+    "Razorpay or Stripe: UPI, cards, wallets, net banking and COD",
   ],
   [
     "Delivery built in",
@@ -110,7 +110,7 @@ export default function CommerceCompare({
           {rented.map(([t, b]) => (
             <li key={t} className={`border-b ${rule} py-4`}>
               <p className="flex gap-3 font-medium">
-                <span className={muted}>—</span>
+                <span className={muted}>&minus;</span>
                 {t}
               </p>
               <p className={`mt-1 pl-6 text-sm leading-relaxed ${muted}`}>

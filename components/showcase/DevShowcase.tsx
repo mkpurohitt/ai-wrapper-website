@@ -47,7 +47,7 @@ function VibeSite() {
   );
 }
 
-/* An editorial, brand-led homepage — the kind we design. */
+/* An editorial, brand-led homepage, the kind we design. */
 function PremiumSite() {
   return (
     <Browser url="maisonora.in">
@@ -65,7 +65,7 @@ function PremiumSite() {
           <div className="col-span-3 flex flex-col justify-between">
             <div>
               <p className="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-[#8a6f52]">
-                Autumn — Handwoven in Jaipur
+                Autumn · Handwoven in Jaipur
               </p>
               <p className="mt-2 font-serif text-[1.6rem] leading-[0.95] sm:text-[2rem]">
                 Quiet pieces,
@@ -86,7 +86,7 @@ function PremiumSite() {
           <div className="col-span-2 space-y-2">
             <div className="h-[8.5rem] rounded-sm bg-[linear-gradient(160deg,#c9a27e,#8a5a3b)] sm:h-[10.5rem]" />
             <div className="flex items-center justify-between text-[0.5rem]">
-              <span>Linen Kurta — Ochre</span>
+              <span>Linen Kurta, Ochre</span>
               <span>₹4,200</span>
             </div>
           </div>
@@ -239,10 +239,10 @@ export function VibeVsPremium() {
           {[
             "Purple gradients and glowing blobs",
             "Generic “Revolutionize your workflow” copy",
-            "Three emoji cards — looks like a thousand other sites",
+            "Three emoji cards that look like a thousand other sites",
           ].map((t) => (
             <li key={t} className="flex gap-3">
-              <span className="text-stone/60">—</span>
+              <span className="text-stone/60">&minus;</span>
               {t}
             </li>
           ))}
@@ -255,7 +255,7 @@ export function VibeVsPremium() {
           {[
             "Typography, colour and layout drawn from your brand",
             "Copy that says what you actually do",
-            "Built to convert — fast, accessible and SEO-ready",
+            "Built to convert: fast, accessible and SEO-ready",
           ].map((t) => (
             <li key={t} className="flex gap-3">
               <span className="text-ember">+</span>

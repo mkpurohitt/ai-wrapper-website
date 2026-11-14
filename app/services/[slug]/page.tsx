@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: service.short,
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
-      title: `${service.name} — ${site.name}`,
+      title: `${service.name} | ${site.name}`,
       description: service.short,
       url: `/services/${service.slug}`,
     },
@@ -178,8 +178,8 @@ export default async function ServicePage({ params }: Props) {
                 </h2>
               </div>
               <p className="self-end leading-relaxed text-stone md:col-span-4">
-                We build your own store — with payment gateway and delivery
-                integration — so you own the checkout, the customer and the
+                We build your own store with payment gateway and delivery
+                integration, so you own the checkout, the customer and the
                 margin.
               </p>
             </div>
@@ -295,7 +295,7 @@ export default async function ServicePage({ params }: Props) {
           className="group flex items-end justify-between gap-6 border-y border-ink/15 py-10 md:py-14"
         >
           <div>
-            <p className="eyebrow text-stone">Next practice — {next.index}</p>
+            <p className="eyebrow text-stone">Next practice · {next.index}</p>
             <p className="display mt-4 text-5xl transition-colors duration-300 group-hover:text-ember md:text-7xl">
               {next.name}
             </p>

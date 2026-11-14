@@ -4,7 +4,7 @@ export const site = {
   email: "contact@aiwrapper.tech",
   location: "Mumbai, India",
   description:
-    "AI Wrapper is a new-age services company. We automate the boring work with AI and Python, build premium websites, apps and custom stores, and run marketing that people actually share — viral content, SEO, AEO, GEO and paid media.",
+    "AI Wrapper is a new-age services company. We automate the boring work with AI and Python, build premium websites, apps and custom stores, and run marketing that people actually share: viral content, SEO, AEO, GEO and paid media.",
 };
 
 export type Faq = { q: string; a: string };
@@ -29,13 +29,13 @@ export const services: Service[] = [
     name: "AI Automation",
     tagline: "Automate the boring work.",
     short:
-      "Python scripts and AI agents that take the daily, repetitive tasks off your team — the reports, data entry, follow-ups and file shuffling nobody was hired to do.",
+      "Python scripts and AI agents that take the daily, repetitive tasks off your team. The reports, data entry, follow-ups and file shuffling nobody was hired to do.",
     intro:
-      "Every team has a list of tasks that eat the first hour of the day: pulling numbers from three tools into one sheet, renaming files, sending the same reminder emails, copying leads into the CRM. We write the Python scripts and AI agents that do that work for you — on a schedule, without mistakes, with a person in the loop where judgment matters.",
+      "Every team has a list of tasks that eat the first hour of the day: pulling numbers from three tools into one sheet, renaming files, sending the same reminder emails, copying leads into the CRM. We write the Python scripts and AI agents that do that work for you on a schedule, without mistakes, with a person in the loop where judgment matters.",
     capabilities: [
       {
         title: "Python task automation",
-        body: "Scripts that handle your daily chores — reports, spreadsheets, emails, file handling, data entry and web scraping — on a schedule.",
+        body: "Scripts that handle your daily chores on a schedule: reports, spreadsheets, emails, file handling, data entry and web scraping.",
       },
       {
         title: "AI agents",
@@ -85,7 +85,7 @@ export const services: Service[] = [
       },
       {
         q: "Does it work with the tools we already use?",
-        a: "In most cases, yes. We build on top of your existing tools — Excel or Google Sheets, Gmail, WhatsApp, your CRM or accounting software — rather than asking you to switch.",
+        a: "In most cases, yes. We build on top of your existing tools, such as Excel or Google Sheets, Gmail, WhatsApp, your CRM or accounting software, rather than asking you to switch.",
       },
     ],
   },
@@ -95,9 +95,9 @@ export const services: Service[] = [
     name: "Development",
     tagline: "Premium, not vibe\u2011coded.",
     short:
-      "New-age websites, apps, custom software and e-commerce stores — designed to look like your brand, not like every other template on the internet.",
+      "New-age websites, apps, custom software and e-commerce stores, designed to look like your brand not like every other template on the internet.",
     intro:
-      "AI tools have made it easy to generate a website in an afternoon, which is why so many now look the same: the purple gradient, the centred headline, three identical cards. We design and engineer from your brand outward — custom typography, layout and motion, fast and accessible code — so your product feels considered, earns trust and converts.",
+      "AI tools have made it easy to generate a website in an afternoon, which is why so many now look the same: the purple gradient, the centred headline, three identical cards. We design and engineer from your brand outward. Custom typography, layout and motion, plus fast and accessible code, make your product feels considered, earns trust and converts.",
     capabilities: [
       {
         title: "Websites",
@@ -105,7 +105,7 @@ export const services: Service[] = [
       },
       {
         title: "E-commerce stores",
-        body: "Your own store with payment gateway and delivery integration — no platform commission on every sale.",
+        body: "Your own store with payment gateway and delivery integration, and no platform commission on every sale.",
       },
       {
         title: "Mobile apps",
@@ -144,11 +144,11 @@ export const services: Service[] = [
     faqs: [
       {
         q: "What does \u201cvibe-coded\u201d mean, and why avoid it?",
-        a: "It describes sites generated quickly with AI tools and default templates. They work, but they tend to look identical — same gradients, same layouts, same stock sections — so visitors cannot tell your brand from the next one. We use AI to work faster, but every design decision is made by people, for your brand.",
+        a: "It describes sites generated quickly with AI tools and default templates. They work, but they tend to look identical: same gradients, same layouts, same stock sections. Visitors cannot tell your brand from the next one. We use AI to work faster, but every design decision is made by people, for your brand.",
       },
       {
         q: "Why build a custom store instead of using Shopify?",
-        a: "Hosted platforms are a good way to start, but you pay a monthly plan, often extra transaction fees, and a subscription for most apps you add — and the costs grow as you sell more. A custom store is a one-time build you own: you pay only your payment gateway\u2019s fee, keep full control of checkout and design, and own your customer data.",
+        a: "Hosted platforms are a good way to start, but you pay a monthly plan, often extra transaction fees, and a subscription for most apps you add, and the costs grow as you sell more. A custom store is a one-time build you own: you pay only your payment gateway\u2019s fee, keep full control of checkout and design, and own your customer data.",
       },
       {
         q: "Do you integrate payments and delivery?",
@@ -166,24 +166,24 @@ export const services: Service[] = [
     name: "New-Age Digital Marketing",
     tagline: "Content people actually share.",
     short:
-      "No boring AI reels. We make content built to go viral, then make sure you are found everywhere people search — Google, social feeds and AI assistants.",
+      "No boring AI reels. We make content built to go viral, then make sure you are found everywhere people search: Google, social feeds and AI assistants.",
     intro:
-      "Feeds are full of the same faceless AI reels — stock voiceover, generic captions, nothing anyone remembers. We do the opposite: content with a real hook, a real story and a native feel for each platform. Then we back it with search. Your customers no longer search in one place. They ask Google, scroll Instagram, and increasingly ask ChatGPT, Gemini or Perplexity for a recommendation. We build visibility across every one of those surfaces, then turn it into pipeline with paid media measured against revenue.",
+      "Feeds are full of the same faceless AI reels: stock voiceover, generic captions, nothing anyone remembers. We do the opposite: content with a real hook, a real story and a native feel for each platform. Then we back it with search. Your customers no longer search in one place. They ask Google, scroll Instagram, and increasingly ask ChatGPT, Gemini or Perplexity for a recommendation. We build visibility across every one of those surfaces, then turn it into pipeline with paid media measured against revenue.",
     capabilities: [
       {
         title: "Viral content and reels",
-        body: "Hook-first short-form video, scripted and edited for each platform — content people watch to the end and share, not template AI clips.",
+        body: "Hook-first short-form video, scripted and edited for each platform. Content people watch to the end and share, not template AI clips.",
       },
       {
         title: "SEO",
-        body: "Technical foundations, content and authority that earn rankings in classic search — still the base everything else draws from.",
+        body: "Technical foundations, content and authority that earn rankings in classic search, still the base everything else draws from.",
       },
       {
-        title: "AEO — answer engine optimisation",
+        title: "AEO: answer engine optimisation",
         body: "Content structured to be the direct answer in featured snippets, AI Overviews and voice results.",
       },
       {
-        title: "GEO — generative engine optimisation",
+        title: "GEO: generative engine optimisation",
         body: "Making your brand the source that ChatGPT, Gemini, Perplexity and Claude cite and recommend.",
       },
       {
@@ -208,7 +208,7 @@ export const services: Service[] = [
       },
       {
         title: "E-commerce marketing",
-        body: "Catalogue ads, shopping campaigns, abandoned-cart flows and retention for stores you own — without paying a platform on every sale.",
+        body: "Catalogue ads, shopping campaigns, abandoned-cart flows and retention for stores you own, without paying a platform on every sale.",
       },
     ],
     outcomes: [
@@ -233,7 +233,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "Do you make AI-generated reels?",
-        a: "Not the generic kind. We use AI to research trends and speed up editing, but every piece starts with a human-written hook and story built for your brand. Faceless template reels are easy to make and easy to scroll past — we make content people stop for.",
+        a: "Not the generic kind. We use AI to research trends and speed up editing, but every piece starts with a human-written hook and story built for your brand. Faceless template reels are easy to make and easy to scroll past. We make content people stop for.",
       },
       {
         q: "What is the difference between SEO, AEO and GEO?",
@@ -254,7 +254,7 @@ export const services: Service[] = [
 export const homeFaqs: Faq[] = [
   {
     q: "What does AI Wrapper do?",
-    a: "AI Wrapper is a new-age services company based in Mumbai. We do three things: AI automation that takes the boring work off your team, development of premium websites, apps, custom software and e-commerce stores, and new-age digital marketing — viral content, SEO, AEO, GEO and paid media across Meta, Google and AI assistants.",
+    a: "AI Wrapper is a new-age services company based in Mumbai. We do three things: AI automation that takes the boring work off your team, development of premium websites, apps, custom software and e-commerce stores, and new-age digital marketing: viral content, SEO, AEO, GEO and paid media across Meta, Google and AI assistants.",
   },
   services[2].faqs[0],
   services[1].faqs[0],
@@ -285,7 +285,7 @@ export const approach = [
   {
     step: "03",
     title: "Build",
-    body: "We ship in short cycles — live automations, products and campaigns, not slide decks.",
+    body: "We ship in short cycles: live automations, products and campaigns, not slide decks.",
   },
   {
     step: "04",

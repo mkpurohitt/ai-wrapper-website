@@ -1,6 +1,6 @@
 # AI Wrapper
 
-Marketing site for AI Wrapper — AI automation, AI model training and new-age digital marketing (SEO, AEO, GEO, social and paid media).
+Marketing site for AI Wrapper: AI automation, premium development and new-age digital marketing (viral content, SEO, AEO, GEO, social and paid media).
 
 Built with Next.js (App Router), Tailwind CSS v4 and Framer Motion.
 
@@ -13,9 +13,9 @@ npm run dev
 
 ## Structure
 
-- `lib/site.ts` — all service, FAQ and company copy. Edit content here.
-- `app/` — pages: home, `/services`, `/services/[slug]`, `/about`, `/portfolio`, `/contact`, `/admin`.
-- `components/` — header, footer, contact form and shared UI.
+- `lib/site.ts`: all service, FAQ and company copy. Edit content here.
+- `app/`: pages: home, `/services`, `/services/[slug]`, `/about`, `/portfolio`, `/contact`, `/admin`.
+- `components/`: header, footer, contact form and shared UI.
 
 ## Environment variables
 

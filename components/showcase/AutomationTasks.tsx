@@ -9,7 +9,7 @@ const tasks = [
 ];
 
 const code = [
-  ["c", "# daily_tasks.py — runs every morning at 7:00"],
+  ["c", "# daily_tasks.py: runs every morning at 7:00"],
   ["k", "from"],
   ["", " tasks "],
   ["k", "import"],
@@ -119,7 +119,7 @@ export default function AutomationTasks() {
           </div>
         </div>
         <p className="mt-6 leading-relaxed text-stone">
-          The same work, done before your team logs in — and anything unusual is
+          The same work, done before your team logs in, and anything unusual is
           flagged to a person instead of guessed.
         </p>
       </Reveal>

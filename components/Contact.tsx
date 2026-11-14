@@ -50,7 +50,7 @@ export default function Contact() {
           user_name: form.name,
           user_email: form.email,
           contact_number: form.phone || "Not provided",
-          subject: `New enquiry — ${topic}`,
+          subject: `New enquiry: ${topic}`,
           message: `${form.company ? `Company: ${form.company}\n` : ""}Interested in: ${topic}\n\n${form.message}`,
         },
         PUBLIC_KEY,
@@ -73,7 +73,7 @@ export default function Contact() {
           </h2>
           <p className="mt-8 max-w-md leading-relaxed text-ash">
             Tell us where you are and what you want to change. We&rsquo;ll reply
-            with a clear next step — no pitch deck, no pressure.
+            with a clear next step. No pitch deck, no pressure.
           </p>
           <div className="mt-12 space-y-1">
             <p className="eyebrow text-ash">Or write to us</p>

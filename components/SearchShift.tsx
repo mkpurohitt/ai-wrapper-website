@@ -1,7 +1,12 @@
 import Reveal from "./Reveal";
 
 function Bar({ w, className = "" }: { w: string; className?: string }) {
-  return <span className={`block h-1.5 rounded-full bg-paper/15 ${className}`} style={{ width: w }} />;
+  return (
+    <span
+      className={`block h-1.5 rounded-full bg-paper/15 ${className}`}
+      style={{ width: w }}
+    />
+  );
 }
 
 const surfaces = [
@@ -18,7 +23,9 @@ const surfaces = [
             <p className="font-mono text-[0.625rem] text-ash">
               {first ? "yourbrand.com" : "another-result.com"}
             </p>
-            <p className={`mt-1.5 text-sm font-medium ${first ? "text-ember" : "text-paper"}`}>
+            <p
+              className={`mt-1.5 text-sm font-medium ${first ? "text-ember" : "text-paper"}`}
+            >
               {first ? "Your page, ranked first" : "A competing result"}
             </p>
             <div className="mt-2.5 space-y-1.5">
@@ -38,7 +45,9 @@ const surfaces = [
     body: "Be the direct answer in featured snippets, AI Overviews and voice results — before anyone scrolls.",
     mock: (
       <div>
-        <p className="font-mono text-[0.625rem] uppercase tracking-widest text-ash">Overview</p>
+        <p className="font-mono text-[0.625rem] uppercase tracking-widest text-ash">
+          Overview
+        </p>
         <div className="mt-3 border-l border-ember pl-4">
           <div className="space-y-1.5">
             <Bar w="100%" className="bg-paper/40" />
@@ -69,8 +78,9 @@ const surfaces = [
         </p>
         <div>
           <p className="text-xs leading-relaxed text-ash">
-            Based on several sources, <span className="font-medium text-paper">Your Brand</span> is
-            a strong choice
+            Based on several sources,{" "}
+            <span className="font-medium text-paper">Your Brand</span> is a
+            strong choice
             <sup className="ml-0.5 text-ember">1</sup>
           </p>
           <div className="mt-2.5 space-y-1.5">

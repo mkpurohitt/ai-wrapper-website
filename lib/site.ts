@@ -4,7 +4,7 @@ export const site = {
   email: "contact@aiwrapper.tech",
   location: "Mumbai, India",
   description:
-    "AI Wrapper is a new-age services company. We automate operations with AI, train models on your data, and run marketing built for how people search now — SEO, AEO, GEO, social and paid media.",
+    "AI Wrapper is a new-age services company. We automate the boring work with AI and Python, build premium websites, apps and custom stores, and run marketing that people actually share — viral content, SEO, AEO, GEO and paid media.",
 };
 
 export type Faq = { q: string; a: string };
@@ -27,129 +27,136 @@ export const services: Service[] = [
     slug: "ai-automation",
     index: "01",
     name: "AI Automation",
-    tagline: "Operations that run themselves.",
+    tagline: "Automate the boring work.",
     short:
-      "AI agents and automated workflows that take repetitive work off your team — running around the clock, with people in the loop where judgment matters.",
+      "Python scripts and AI agents that take the daily, repetitive tasks off your team — the reports, data entry, follow-ups and file shuffling nobody was hired to do.",
     intro:
-      "Most companies lose hours every day to work nobody was hired to do: copying data between tools, chasing leads, answering the same questions, reconciling documents. We map that work, then replace it with agents and workflows that are reliable enough to run unattended and transparent enough to trust.",
+      "Every team has a list of tasks that eat the first hour of the day: pulling numbers from three tools into one sheet, renaming files, sending the same reminder emails, copying leads into the CRM. We write the Python scripts and AI agents that do that work for you — on a schedule, without mistakes, with a person in the loop where judgment matters.",
     capabilities: [
       {
+        title: "Python task automation",
+        body: "Scripts that handle your daily chores — reports, spreadsheets, emails, file handling, data entry and web scraping — on a schedule.",
+      },
+      {
         title: "AI agents",
-        body: "Agents that handle support, sales follow-up and back-office tasks end to end, escalating to a person when confidence is low.",
+        body: "Agents that handle support, sales follow-up and back-office work end to end, escalating to a person when confidence is low.",
       },
       {
         title: "Workflow automation",
-        body: "Your CRM, inbox, spreadsheets, billing and internal tools connected so information moves without copy and paste.",
+        body: "Your CRM, inbox, sheets, billing and internal tools connected so information moves without copy and paste.",
       },
       {
-        title: "Conversational assistants",
-        body: "Chat and voice assistants for web, WhatsApp and phone, grounded in your own knowledge so answers stay accurate.",
+        title: "WhatsApp and chat assistants",
+        body: "Assistants for web, WhatsApp and phone, grounded in your own information so answers stay accurate.",
       },
       {
         title: "Lead and CRM automation",
-        body: "Leads captured, enriched, qualified, routed and nurtured automatically, so sales time goes to conversations that convert.",
+        body: "Leads captured, enriched, qualified, routed and followed up automatically, so sales time goes to real conversations.",
       },
       {
         title: "Document and data processing",
-        body: "Invoices, forms, contracts and reports extracted, classified and reconciled with an audit trail.",
-      },
-      {
-        title: "Internal copilots",
-        body: "Search and question answering across your company knowledge, with permissions respected.",
+        body: "Invoices, forms, contracts and reports extracted, checked and filed with an audit trail.",
       },
     ],
     outcomes: [
-      "A process map showing where automation pays back first",
-      "Production agents and workflows, documented and monitored",
-      "Reporting on volume, accuracy and hours returned to the team",
-      "Handover and training so your team owns the system",
+      "A list of your boring tasks, ranked by hours saved",
+      "Working scripts, agents and workflows, documented and monitored",
+      "A weekly view of tasks run, errors caught and time returned",
+      "Handover so your team can own and extend the system",
     ],
     stack: [
-      "n8n",
       "Python",
+      "n8n",
       "OpenAI",
       "Claude",
       "Gemini",
       "WhatsApp Business API",
+      "Google Sheets & Workspace",
       "CRMs and helpdesks",
-      "Google Workspace",
     ],
     faqs: [
       {
-        q: "What should we automate first?",
-        a: "The work that is frequent, rule-heavy and expensive when it goes wrong. We start with a short audit that ranks your processes by effort saved and risk, so the first build pays for the next one.",
+        q: "What kind of tasks can you automate?",
+        a: "Anything repetitive and rule-based: daily and weekly reports, moving data between tools, updating spreadsheets, sending reminders and invoices, renaming and filing documents, scraping prices or listings, and first-line replies to customers. If someone does it the same way every day, it is a candidate.",
       },
       {
         q: "Will automation replace our team?",
-        a: "No. The goal is to remove repetitive work so people can spend time on judgment, relationships and craft. Every system we build keeps a human in the loop for decisions that need one.",
+        a: "No. It removes the repetitive work so people can spend time on judgment, relationships and craft. Every system we build keeps a person in the loop for decisions that need one.",
       },
       {
         q: "Does it work with the tools we already use?",
-        a: "In most cases, yes. We build on top of your existing stack through APIs and integration platforms rather than asking you to switch tools.",
+        a: "In most cases, yes. We build on top of your existing tools — Excel or Google Sheets, Gmail, WhatsApp, your CRM or accounting software — rather than asking you to switch.",
       },
     ],
   },
   {
-    slug: "ai-model-training",
+    slug: "development",
     index: "02",
-    name: "AI Model Training",
-    tagline: "Models that know your business.",
+    name: "Development",
+    tagline: "Premium, not vibe\u2011coded.",
     short:
-      "Off-the-shelf models know the internet. We train and tune models on your data so they know your products, your tone and your domain.",
+      "New-age websites, apps, custom software and e-commerce stores — designed to look like your brand, not like every other template on the internet.",
     intro:
-      "A general model gives general answers. When accuracy, voice or domain knowledge matters, the model has to learn from you. We prepare your data, choose the right approach — fine-tuning, retrieval or a custom model — and ship something you can measure, deploy and keep improving.",
+      "AI tools have made it easy to generate a website in an afternoon, which is why so many now look the same: the purple gradient, the centred headline, three identical cards. We design and engineer from your brand outward — custom typography, layout and motion, fast and accessible code — so your product feels considered, earns trust and converts.",
     capabilities: [
       {
-        title: "LLM fine-tuning",
-        body: "Language models tuned on your examples so outputs match your terminology, format and brand voice.",
+        title: "Websites",
+        body: "Custom-designed marketing sites and landing pages in Next.js, built for speed, search and conversion.",
       },
       {
-        title: "Retrieval and knowledge systems",
-        body: "RAG pipelines that ground answers in your documents, with citations back to the source.",
+        title: "E-commerce stores",
+        body: "Your own store with payment gateway and delivery integration — no platform commission on every sale.",
       },
       {
-        title: "Data preparation",
-        body: "Collection, cleaning, labelling and synthetic data generation — the unglamorous work that decides model quality.",
+        title: "Mobile apps",
+        body: "iOS and Android apps in React Native or Flutter, with polished interfaces and AI features where they help.",
       },
       {
-        title: "Custom ML models",
-        body: "Prediction, classification, scoring and recommendation models built for a specific business decision.",
+        title: "Custom software",
+        body: "Dashboards, portals, booking systems and internal tools shaped around how your business actually works.",
       },
       {
-        title: "Evaluation and guardrails",
-        body: "Test sets, automated scoring and safety checks, so you know how the model behaves before customers do.",
+        title: "Payments and integrations",
+        body: "Razorpay, Stripe and UPI payments, delivery partners, CRMs and accounting software connected end to end.",
       },
       {
-        title: "Deployment and monitoring",
-        body: "Models served in your cloud or ours, with cost, latency and quality tracked after launch.",
+        title: "Design systems",
+        body: "Typography, colour, components and motion defined once, so every new page stays on brand.",
       },
     ],
     outcomes: [
-      "A clear recommendation: fine-tune, retrieve or build",
-      "A cleaned, versioned dataset you can reuse",
-      "A trained model with an evaluation report",
-      "Deployment, monitoring and a retraining plan",
+      "A custom design, approved before a line of code is written",
+      "A fast, accessible build with clean, documented code",
+      "Payments, delivery, analytics and SEO set up from day one",
+      "Full ownership of the code, the domain and your customer data",
     ],
     stack: [
-      "Open-weight LLMs",
-      "Hosted fine-tuning APIs",
-      "PyTorch",
-      "Hugging Face",
-      "Vector databases",
-      "Evaluation harnesses",
+      "Next.js",
+      "React",
+      "React Native",
+      "Flutter",
+      "Node.js",
+      "Python",
+      "Razorpay",
+      "Stripe",
+      "Shiprocket",
     ],
     faqs: [
       {
-        q: "Do we need fine-tuning or RAG?",
-        a: "Often retrieval is enough when the model needs facts, and fine-tuning is right when it needs a behaviour — a tone, a format, a way of reasoning. Many production systems combine both. We test before we recommend.",
+        q: "What does \u201cvibe-coded\u201d mean, and why avoid it?",
+        a: "It describes sites generated quickly with AI tools and default templates. They work, but they tend to look identical — same gradients, same layouts, same stock sections — so visitors cannot tell your brand from the next one. We use AI to work faster, but every design decision is made by people, for your brand.",
       },
       {
-        q: "How much data do we need?",
-        a: "Usually less than teams expect. Quality matters more than volume, and a focused set of good examples can go a long way. We assess what you have before proposing anything.",
+        q: "Why build a custom store instead of using Shopify?",
+        a: "Hosted platforms are a good way to start, but you pay a monthly plan, often extra transaction fees, and a subscription for most apps you add — and the costs grow as you sell more. A custom store is a one-time build you own: you pay only your payment gateway\u2019s fee, keep full control of checkout and design, and own your customer data.",
       },
       {
-        q: "Who owns the model and the data?",
-        a: "You do. Datasets, model weights and pipelines are handed over, and your data is never used to train anything for anyone else.",
+        q: "Do you integrate payments and delivery?",
+        a: "Yes. We integrate payment gateways such as Razorpay and Stripe, including UPI, cards and wallets, and delivery partners such as Shiprocket, with order tracking, invoices and notifications for your customers.",
+      },
+      {
+        q: "Will we own the code?",
+        a: "Yes. The code, design files, domain and data are yours. We document the build so any developer can work on it later.",
       },
     ],
   },
@@ -157,12 +164,16 @@ export const services: Service[] = [
     slug: "digital-marketing",
     index: "03",
     name: "New-Age Digital Marketing",
-    tagline: "Found everywhere people ask.",
+    tagline: "Content people actually share.",
     short:
-      "Search now happens in Google, in feeds and inside AI assistants. We run SEO, AEO, GEO, social and paid media as one system built for all three.",
+      "No boring AI reels. We make content built to go viral, then make sure you are found everywhere people search — Google, social feeds and AI assistants.",
     intro:
-      "Your customers no longer search in one place. They ask Google, scroll Instagram, and increasingly ask ChatGPT, Gemini or Perplexity for a recommendation. We build visibility across every one of those surfaces, then turn it into pipeline with paid media measured against revenue.",
+      "Feeds are full of the same faceless AI reels — stock voiceover, generic captions, nothing anyone remembers. We do the opposite: content with a real hook, a real story and a native feel for each platform. Then we back it with search. Your customers no longer search in one place. They ask Google, scroll Instagram, and increasingly ask ChatGPT, Gemini or Perplexity for a recommendation. We build visibility across every one of those surfaces, then turn it into pipeline with paid media measured against revenue.",
     capabilities: [
+      {
+        title: "Viral content and reels",
+        body: "Hook-first short-form video, scripted and edited for each platform — content people watch to the end and share, not template AI clips.",
+      },
       {
         title: "SEO",
         body: "Technical foundations, content and authority that earn rankings in classic search — still the base everything else draws from.",
@@ -195,14 +206,21 @@ export const services: Service[] = [
         title: "Performance marketing",
         body: "Tracking, attribution and conversion optimisation, so spend is judged by revenue rather than clicks.",
       },
+      {
+        title: "E-commerce marketing",
+        body: "Catalogue ads, shopping campaigns, abandoned-cart flows and retention for stores you own — without paying a platform on every sale.",
+      },
     ],
     outcomes: [
+      "A content engine: hooks, scripts and edits made for each platform",
       "A visibility audit across search, answer engines and AI assistants",
       "A content and technical roadmap for SEO, AEO and GEO",
       "Paid campaigns with clean tracking and attribution",
       "Reporting tied to leads, revenue and cost of acquisition",
     ],
     stack: [
+      "Instagram Reels",
+      "YouTube Shorts",
       "Google Search",
       "AI Overviews",
       "ChatGPT",
@@ -213,6 +231,10 @@ export const services: Service[] = [
       "GA4",
     ],
     faqs: [
+      {
+        q: "Do you make AI-generated reels?",
+        a: "Not the generic kind. We use AI to research trends and speed up editing, but every piece starts with a human-written hook and story built for your brand. Faceless template reels are easy to make and easy to scroll past — we make content people stop for.",
+      },
       {
         q: "What is the difference between SEO, AEO and GEO?",
         a: "SEO earns rankings in search results. AEO (answer engine optimisation) makes your content the direct answer in featured snippets, AI Overviews and voice. GEO (generative engine optimisation) makes your brand a source that AI assistants such as ChatGPT, Gemini and Perplexity cite and recommend. They build on each other, so we run them together.",
@@ -232,11 +254,12 @@ export const services: Service[] = [
 export const homeFaqs: Faq[] = [
   {
     q: "What does AI Wrapper do?",
-    a: "AI Wrapper is a new-age services company based in Mumbai. We do three things: AI automation, AI model training, and digital marketing built for modern search — SEO, AEO, GEO, social media and paid media across Meta, Google and AI assistants.",
+    a: "AI Wrapper is a new-age services company based in Mumbai. We do three things: AI automation that takes the boring work off your team, development of premium websites, apps, custom software and e-commerce stores, and new-age digital marketing — viral content, SEO, AEO, GEO and paid media across Meta, Google and AI assistants.",
   },
   services[2].faqs[0],
-  services[2].faqs[2],
   services[1].faqs[0],
+  services[1].faqs[1],
+  services[2].faqs[1],
   services[0].faqs[0],
   {
     q: "How does an engagement start?",
@@ -262,19 +285,19 @@ export const approach = [
   {
     step: "03",
     title: "Build",
-    body: "We ship in short cycles — live workflows, trained models and campaigns, not slide decks.",
+    body: "We ship in short cycles — live automations, products and campaigns, not slide decks.",
   },
   {
     step: "04",
     title: "Compound",
-    body: "We measure, learn and reinvest. Automation funds growth; growth creates data; data improves the models.",
+    body: "We measure, learn and reinvest. Automation frees time; better products convert; content brings the traffic.",
   },
 ];
 
 export const principles = [
   {
-    title: "One team for AI and growth",
-    body: "The people automating your funnel understand what fills it. No hand-offs between an AI vendor and a marketing agency.",
+    title: "One team for build and growth",
+    body: "The people building your site and automations understand the marketing that fills them. No hand-offs between a dev shop and an agency.",
   },
   {
     title: "Measured against revenue",
@@ -282,7 +305,7 @@ export const principles = [
   },
   {
     title: "Built to be owned",
-    body: "Workflows, models, ad accounts and data stay yours. We document everything so you are never locked in.",
+    body: "Code, workflows, ad accounts and data stay yours. We document everything so you are never locked in.",
   },
   {
     title: "Humans in the loop",
@@ -310,7 +333,10 @@ export const labs = [
 
 export const workCategories = [
   "AI Automation",
-  "AI Model Training",
+  "Websites",
+  "Apps & Software",
+  "E-commerce",
+  "Viral Content",
   "SEO / AEO / GEO",
   "Social Media",
   "Paid Media",

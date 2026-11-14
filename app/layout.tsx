@@ -6,8 +6,16 @@ import { JsonLd } from "@/components/ui";
 import { services, site } from "@/lib/site";
 import "./globals.css";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+});
 const instrument = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
@@ -23,14 +31,20 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "AI Wrapper — AI Automation, Model Training & New-Age Digital Marketing",
+    default:
+      "AI Wrapper — AI Automation, Premium Development & New-Age Digital Marketing",
     template: "%s — AI Wrapper",
   },
   description: site.description,
   keywords: [
     "AI automation agency",
-    "AI model training",
-    "LLM fine-tuning",
+    "Python automation",
+    "premium website development",
+    "custom e-commerce website",
+    "Shopify alternative India",
+    "app development",
+    "custom software development",
+    "viral content agency",
     "generative engine optimisation",
     "GEO agency",
     "answer engine optimisation",
@@ -90,8 +104,12 @@ const organization = {
   knowsAbout: [
     "AI automation",
     "AI agents",
-    "AI model training",
-    "LLM fine-tuning",
+    "Python automation",
+    "Web development",
+    "App development",
+    "Custom software development",
+    "E-commerce development",
+    "Viral content",
     "Search engine optimisation",
     "Answer engine optimisation",
     "Generative engine optimisation",
@@ -116,9 +134,14 @@ const organization = {
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrument.variable}`}>
+    <html
+      lang="en"
+      className={`${geist.variable} ${geistMono.variable} ${instrument.variable}`}
+    >
       <body className="antialiased">
         <JsonLd data={organization} />
         <a

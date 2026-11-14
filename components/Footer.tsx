@@ -17,8 +17,8 @@ export default function Footer() {
                 {site.name}
               </Link>
               <p className="mt-5 max-w-sm text-[0.9375rem] leading-relaxed text-ash">
-                A new-age services company for AI automation, model training and
-                modern digital marketing.
+                A new-age services company for AI automation, premium
+                development and modern digital marketing.
               </p>
             </div>
 
@@ -85,7 +85,7 @@ export default function Footer() {
               reserved.
             </p>
             <p>
-              AI automation · Model training · SEO, AEO &amp; GEO · Paid media
+              AI automation · Development · Viral content · SEO, AEO &amp; GEO
             </p>
           </div>
         </div>

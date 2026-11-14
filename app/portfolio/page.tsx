@@ -24,7 +24,8 @@ export default function PortfolioPage() {
     fetch("/api/projects")
       .then((res) => res.json())
       .then((data) => {
-        if (active && data.success && Array.isArray(data.data)) setProjects(data.data);
+        if (active && data.success && Array.isArray(data.data))
+          setProjects(data.data);
       })
       .catch(() => {})
       .finally(() => {
@@ -37,12 +38,15 @@ export default function PortfolioPage() {
 
   const categories = useMemo(() => {
     const found = Array.from(
-      new Set(projects.map((p) => p.category).filter((c): c is string => Boolean(c)))
+      new Set(
+        projects.map((p) => p.category).filter((c): c is string => Boolean(c)),
+      ),
     );
     return found.length > 1 ? ["All", ...found] : [];
   }, [projects]);
 
-  const visible = filter === "All" ? projects : projects.filter((p) => p.category === filter);
+  const visible =
+    filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
   return (
     <>
@@ -52,7 +56,7 @@ export default function PortfolioPage() {
           Selected <em className="text-ember">work.</em>
         </h1>
         <p className="mt-10 max-w-2xl text-lg leading-relaxed text-stone md:text-xl">
-          Systems, models and campaigns we have built with our clients.
+          Automations, products and campaigns we have built with our clients.
         </p>
 
         {categories.length > 0 && (
@@ -78,7 +82,10 @@ export default function PortfolioPage() {
 
       <section className="shell min-h-[20rem] pb-24 md:pb-40">
         {loading ? (
-          <div className="grid gap-x-8 gap-y-14 md:grid-cols-2" aria-busy="true">
+          <div
+            className="grid gap-x-8 gap-y-14 md:grid-cols-2"
+            aria-busy="true"
+          >
             {[0, 1].map((n) => (
               <div key={n} className="animate-pulse">
                 <div className="aspect-[4/3] bg-bone" />
@@ -93,7 +100,8 @@ export default function PortfolioPage() {
               Case studies are being prepared for publication.
             </p>
             <p className="mt-6 max-w-xl leading-relaxed text-stone">
-              In the meantime, we are happy to walk you through relevant work on a call.
+              In the meantime, we are happy to walk you through relevant work on
+              a call.
             </p>
             <ButtonLink href="/contact" className="mt-9">
               Request a walkthrough
@@ -118,8 +126,12 @@ export default function PortfolioPage() {
                   </div>
                   <div className="mt-6 flex items-start justify-between gap-6">
                     <div>
-                      {p.category && <p className="eyebrow text-stone">{p.category}</p>}
-                      <h2 className="display mt-3 text-4xl md:text-5xl">{p.title}</h2>
+                      {p.category && (
+                        <p className="eyebrow text-stone">{p.category}</p>
+                      )}
+                      <h2 className="display mt-3 text-4xl md:text-5xl">
+                        {p.title}
+                      </h2>
                     </div>
                     {href && (
                       <a
@@ -134,7 +146,9 @@ export default function PortfolioPage() {
                     )}
                   </div>
                   {p.description && (
-                    <p className="mt-4 max-w-xl leading-relaxed text-stone">{p.description}</p>
+                    <p className="mt-4 max-w-xl leading-relaxed text-stone">
+                      {p.description}
+                    </p>
                   )}
                   {p.techStack && p.techStack.length > 0 && (
                     <ul className="mt-5 flex flex-wrap gap-2">

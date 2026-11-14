@@ -19,12 +19,19 @@ export default function AdminPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [imageFile, setImageFile] = useState<File | null>(null);
-  const [notice, setNotice] = useState<{ ok: boolean; text: string } | null>(null);
+  const [notice, setNotice] = useState<{ ok: boolean; text: string } | null>(
+    null,
+  );
   const [formData, setFormData] = useState(emptyForm);
 
-  const set = (key: keyof typeof emptyForm) => (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => setFormData((f) => ({ ...f, [key]: e.target.value }));
+  const set =
+    (key: keyof typeof emptyForm) =>
+    (
+      e: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >,
+    ) =>
+      setFormData((f) => ({ ...f, [key]: e.target.value }));
 
   // The password is verified server-side when a project is published.
   const uploadImage = async (): Promise<string> => {
@@ -32,15 +39,20 @@ export default function AdminPage() {
     const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
     const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
     if (!cloudName || !uploadPreset) {
-      throw new Error("Cloudinary is not configured. Check the environment variables.");
+      throw new Error(
+        "Cloudinary is not configured. Check the environment variables.",
+      );
     }
     const data = new FormData();
     data.append("file", imageFile);
     data.append("upload_preset", uploadPreset);
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-      method: "POST",
-      body: data,
-    });
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+      {
+        method: "POST",
+        body: data,
+      },
+    );
     const file = await res.json();
     if (!res.ok) throw new Error(file.error?.message || "Image upload failed.");
     return file.secure_url;
@@ -66,12 +78,16 @@ export default function AdminPage() {
         }),
       });
       const result = await res.json();
-      if (!result.success) throw new Error(result.error || "Publishing failed.");
+      if (!result.success)
+        throw new Error(result.error || "Publishing failed.");
       setFormData(emptyForm);
       setImageFile(null);
       setNotice({ ok: true, text: "Project published." });
     } catch (err) {
-      setNotice({ ok: false, text: err instanceof Error ? err.message : "Something went wrong." });
+      setNotice({
+        ok: false,
+        text: err instanceof Error ? err.message : "Something went wrong.",
+      });
     } finally {
       setLoading(false);
     }
@@ -117,11 +133,20 @@ export default function AdminPage() {
         <div className="grid gap-8 md:grid-cols-2">
           <label className="block">
             <span className="eyebrow text-stone">Project title</span>
-            <input required className={input} value={formData.title} onChange={set("title")} />
+            <input
+              required
+              className={input}
+              value={formData.title}
+              onChange={set("title")}
+            />
           </label>
           <label className="block">
             <span className="eyebrow text-stone">Category</span>
-            <select className={input} value={formData.category} onChange={set("category")}>
+            <select
+              className={input}
+              value={formData.category}
+              onChange={set("category")}
+            >
               {workCategories.map((cat) => (
                 <option key={cat} value={cat}>
                   {cat}
@@ -143,8 +168,15 @@ export default function AdminPage() {
         </label>
 
         <label className="block">
-          <span className="eyebrow text-stone">Tools and platforms (comma separated)</span>
-          <input required className={input} value={formData.techStack} onChange={set("techStack")} />
+          <span className="eyebrow text-stone">
+            Tools and platforms (comma separated)
+          </span>
+          <input
+            required
+            className={input}
+            value={formData.techStack}
+            onChange={set("techStack")}
+          />
         </label>
 
         <label className="relative block cursor-pointer border border-dashed border-ink/30 p-8 text-center transition-colors hover:border-ink">
@@ -154,17 +186,29 @@ export default function AdminPage() {
             onChange={(e) => setImageFile(e.target.files?.[0] || null)}
             className="absolute inset-0 cursor-pointer opacity-0"
           />
-          <span className="text-stone">{imageFile ? imageFile.name : "Choose a cover image"}</span>
+          <span className="text-stone">
+            {imageFile ? imageFile.name : "Choose a cover image"}
+          </span>
         </label>
 
         <div className="grid gap-8 md:grid-cols-2">
           <label className="block">
-            <span className="eyebrow text-stone">Repository URL (optional)</span>
-            <input className={input} value={formData.githubLink} onChange={set("githubLink")} />
+            <span className="eyebrow text-stone">
+              Repository URL (optional)
+            </span>
+            <input
+              className={input}
+              value={formData.githubLink}
+              onChange={set("githubLink")}
+            />
           </label>
           <label className="block">
             <span className="eyebrow text-stone">Live URL (optional)</span>
-            <input className={input} value={formData.liveLink} onChange={set("liveLink")} />
+            <input
+              className={input}
+              value={formData.liveLink}
+              onChange={set("liveLink")}
+            />
           </label>
         </div>
 

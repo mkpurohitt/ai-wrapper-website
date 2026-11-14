@@ -3,12 +3,19 @@ import Contact from "@/components/Contact";
 import Faq, { faqSchema } from "@/components/Faq";
 import Reveal from "@/components/Reveal";
 import SearchShift from "@/components/SearchShift";
+import { VibeVsPremium } from "@/components/showcase/DevShowcase";
+import ViralContent from "@/components/showcase/ViralContent";
 import { Arrow, ButtonLink, Eyebrow, JsonLd } from "@/components/ui";
 import { approach, homeFaqs, principles, services } from "@/lib/site";
 
 const ticker = [
   "AI Automation",
-  "Model Training",
+  "Python Automation",
+  "Websites",
+  "Apps",
+  "Custom Software",
+  "E-commerce",
+  "Viral Content",
   "SEO",
   "AEO",
   "GEO",
@@ -20,6 +27,14 @@ const ticker = [
 ];
 
 const channels = [
+  {
+    name: "Viral content and reels",
+    body: "Hook-first short-form video people watch to the end — not template AI clips.",
+  },
+  {
+    name: "E-commerce marketing",
+    body: "Catalogue ads, shopping campaigns and cart recovery for stores you own.",
+  },
   {
     name: "Social media marketing",
     body: "Strategy, content and community on the platforms your audience actually uses.",
@@ -42,10 +57,19 @@ const channels = [
   },
 ];
 
-function HeroLine({ children, delay }: { children: React.ReactNode; delay: number }) {
+function HeroLine({
+  children,
+  delay,
+}: {
+  children: React.ReactNode;
+  delay: number;
+}) {
   return (
     <span className="block overflow-hidden pb-[0.12em]">
-      <span className="block animate-rise" style={{ animationDelay: `${delay}ms` }}>
+      <span
+        className="block animate-rise"
+        style={{ animationDelay: `${delay}ms` }}
+      >
         {children}
       </span>
     </span>
@@ -74,8 +98,9 @@ export default function Home() {
             style={{ animationDelay: "650ms" }}
           >
             <p className="max-w-xl text-lg leading-relaxed text-stone md:col-span-6 md:text-xl">
-              We automate operations with AI, train models on your data, and run marketing built
-              for how people search now — across Google, social feeds and AI assistants.
+              We automate the boring work with AI and Python, build premium
+              websites, apps and stores that don&rsquo;t look vibe-coded, and
+              make content people actually share.
             </p>
             <div className="flex flex-wrap items-start gap-3 md:col-span-6 md:justify-end">
               <ButtonLink href="/contact">Start a project</ButtonLink>
@@ -100,17 +125,25 @@ export default function Home() {
               <span className="link-line pb-0.5">{s.name}</span>
             </Link>
           ))}
-          <p className="eyebrow self-baseline text-stone md:text-right">Mumbai — Worldwide</p>
+          <p className="eyebrow self-baseline text-stone md:text-right">
+            Mumbai — Worldwide
+          </p>
         </div>
       </section>
 
       {/* Ticker */}
-      <div className="overflow-hidden border-y border-ink/15 py-5" aria-hidden="true">
+      <div
+        className="overflow-hidden border-y border-ink/15 py-5"
+        aria-hidden="true"
+      >
         <div className="flex w-max animate-marquee">
           {[0, 1].map((n) => (
             <ul key={n} className="flex shrink-0 items-center">
               {ticker.map((t) => (
-                <li key={t} className="display flex items-center text-3xl italic md:text-4xl">
+                <li
+                  key={t}
+                  className="display flex items-center text-3xl italic md:text-4xl"
+                >
                   <span className="px-7">{t}</span>
                   <span className="h-1.5 w-1.5 rounded-full bg-ember" />
                 </li>
@@ -127,10 +160,12 @@ export default function Home() {
         </div>
         <Reveal className="md:col-span-9">
           <p className="display text-4xl leading-[1.08] md:text-6xl md:leading-[1.05]">
-            Search is becoming a conversation. Operations are becoming software.{" "}
+            AI made it easy to build the same website and post the same reel as
+            everyone else.{" "}
             <span className="text-stone">
-              We help ambitious companies make both shifts at once — so they are found by the
-              machines people now ask, and run by the ones that never sleep.
+              We use it the other way — to take the boring work off your team,
+              so the things your customers actually see can be crafted,
+              distinctive and worth sharing.
             </span>
           </p>
         </Reveal>
@@ -141,9 +176,14 @@ export default function Home() {
         <div className="flex items-end justify-between gap-6 pb-10">
           <div>
             <Eyebrow className="text-stone">What we do</Eyebrow>
-            <h2 className="display mt-6 text-5xl md:text-7xl">Three practices, one team.</h2>
+            <h2 className="display mt-6 text-5xl md:text-7xl">
+              Three practices, one team.
+            </h2>
           </div>
-          <Link href="/services" className="link-line hidden shrink-0 pb-0.5 text-sm md:block">
+          <Link
+            href="/services"
+            className="link-line hidden shrink-0 pb-0.5 text-sm md:block"
+          >
             All services
           </Link>
         </div>
@@ -155,7 +195,9 @@ export default function Home() {
                 href={`/services/${s.slug}`}
                 className="group grid gap-6 border-b border-ink/15 py-10 transition-colors duration-500 hover:bg-bone/60 md:grid-cols-12 md:gap-8 md:px-4 md:py-14"
               >
-                <p className="eyebrow pt-3 text-stone md:col-span-1">{s.index}</p>
+                <p className="eyebrow pt-3 text-stone md:col-span-1">
+                  {s.index}
+                </p>
                 <div className="md:col-span-5">
                   <h3 className="display text-4xl transition-colors duration-300 group-hover:text-ember md:text-6xl">
                     {s.name}
@@ -186,6 +228,47 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Development */}
+      <section className="bg-bone">
+        <div className="shell py-24 md:py-40">
+          <div className="grid gap-8 pb-14 md:grid-cols-12 md:pb-20">
+            <div className="md:col-span-7">
+              <Eyebrow className="text-stone">Development</Eyebrow>
+              <h2 className="display mt-6 text-5xl md:text-7xl">
+                Not another <em className="text-ember">vibe&#8209;coded</em> website.
+              </h2>
+            </div>
+            <div className="self-end md:col-span-4 md:col-start-9">
+              <p className="leading-relaxed text-stone">
+                Websites, apps, custom software and e-commerce stores — with
+                payments and delivery built in, and no platform commission on
+                every sale.
+              </p>
+              <ButtonLink
+                href="/services/development"
+                tone="ghost"
+                className="mt-7"
+              >
+                Development services
+              </ButtonLink>
+            </div>
+          </div>
+          <VibeVsPremium />
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="shell py-24 md:py-40">
+        <div className="pb-14 md:pb-20">
+          <Eyebrow className="text-stone">Content</Eyebrow>
+          <h2 className="display mt-6 max-w-5xl text-5xl md:text-7xl">
+            No boring AI reels.{" "}
+            <em className="text-ember">Content people share.</em>
+          </h2>
+        </div>
+        <ViralContent />
+      </section>
+
       {/* New-age marketing */}
       <section className="bg-ink text-paper">
         <div className="shell py-24 md:py-40">
@@ -193,12 +276,14 @@ export default function Home() {
             <div className="md:col-span-7">
               <Eyebrow className="text-ash">New-age marketing</Eyebrow>
               <h2 className="display mt-6 text-5xl md:text-7xl">
-                Ranking is no longer the finish line. <em className="text-ember">Being cited is.</em>
+                Ranking is no longer the finish line.{" "}
+                <em className="text-ember">Being cited is.</em>
               </h2>
             </div>
             <p className="self-end leading-relaxed text-ash md:col-span-4 md:col-start-9">
-              People still search — but more and more, an AI answers. We optimise for all three
-              surfaces, so your brand shows up whether someone types, taps or asks.
+              People still search — but more and more, an AI answers. We
+              optimise for all three surfaces, so your brand shows up whether
+              someone types, taps or asks.
             </p>
           </div>
 
@@ -210,7 +295,11 @@ export default function Home() {
               <h3 className="display mt-6 text-4xl md:text-5xl">
                 Paid and social, measured against revenue.
               </h3>
-              <ButtonLink href="/services/digital-marketing" tone="ghost-dark" className="mt-9">
+              <ButtonLink
+                href="/services/digital-marketing"
+                tone="ghost-dark"
+                className="mt-9"
+              >
                 Marketing services
               </ButtonLink>
             </div>
@@ -221,8 +310,12 @@ export default function Home() {
                     delay={i * 0.04}
                     className="grid gap-2 border-b border-paper/15 py-6 sm:grid-cols-5 sm:gap-6"
                   >
-                    <p className="text-lg font-medium tracking-tight sm:col-span-2">{c.name}</p>
-                    <p className="leading-relaxed text-ash sm:col-span-3">{c.body}</p>
+                    <p className="text-lg font-medium tracking-tight sm:col-span-2">
+                      {c.name}
+                    </p>
+                    <p className="leading-relaxed text-ash sm:col-span-3">
+                      {c.body}
+                    </p>
                   </Reveal>
                 </li>
               ))}
@@ -279,10 +372,16 @@ export default function Home() {
                 key={p.title}
                 className="grid gap-3 border-b border-ink/15 py-9 sm:grid-cols-12 sm:gap-6"
               >
-                <p className="eyebrow pt-1.5 text-stone sm:col-span-1">0{i + 1}</p>
+                <p className="eyebrow pt-1.5 text-stone sm:col-span-1">
+                  0{i + 1}
+                </p>
                 <div className="sm:col-span-11">
-                  <h3 className="text-2xl font-medium tracking-tight">{p.title}</h3>
-                  <p className="mt-3 max-w-xl leading-relaxed text-stone">{p.body}</p>
+                  <h3 className="text-2xl font-medium tracking-tight">
+                    {p.title}
+                  </h3>
+                  <p className="mt-3 max-w-xl leading-relaxed text-stone">
+                    {p.body}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -291,10 +390,15 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="shell grid gap-12 py-24 md:grid-cols-12 md:py-40">
+      <section
+        id="faq"
+        className="shell grid gap-12 py-24 md:grid-cols-12 md:py-40"
+      >
         <div className="md:col-span-4">
           <Eyebrow className="text-stone">Questions</Eyebrow>
-          <h2 className="display mt-6 text-5xl md:text-6xl">Asked often, answered plainly.</h2>
+          <h2 className="display mt-6 text-5xl md:text-6xl">
+            Asked often, answered plainly.
+          </h2>
         </div>
         <div className="md:col-span-7 md:col-start-6">
           <Faq items={homeFaqs} />

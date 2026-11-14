@@ -5,6 +5,13 @@ import Contact from "@/components/Contact";
 import Faq, { faqSchema } from "@/components/Faq";
 import Reveal from "@/components/Reveal";
 import SearchShift from "@/components/SearchShift";
+import AutomationTasks from "@/components/showcase/AutomationTasks";
+import CommerceCompare from "@/components/showcase/CommerceCompare";
+import {
+  ConceptGallery,
+  VibeVsPremium,
+} from "@/components/showcase/DevShowcase";
+import ViralContent from "@/components/showcase/ViralContent";
 import { Arrow, ButtonLink, Eyebrow, JsonLd } from "@/components/ui";
 import { services, site } from "@/lib/site";
 
@@ -63,7 +70,10 @@ export default async function ServicePage({ params }: Props) {
       <JsonLd data={faqSchema(service.faqs)} />
 
       <section className="shell pb-16 pt-40 md:pb-24 md:pt-56">
-        <nav aria-label="Breadcrumb" className="eyebrow flex items-center gap-3 text-stone">
+        <nav
+          aria-label="Breadcrumb"
+          className="eyebrow flex items-center gap-3 text-stone"
+        >
           <Link href="/services" className="link-line pb-0.5 hover:text-ink">
             Services
           </Link>
@@ -76,7 +86,9 @@ export default async function ServicePage({ params }: Props) {
           {service.tagline}
         </h1>
         <div className="mt-12 grid gap-8 md:grid-cols-12">
-          <p className="text-xl leading-relaxed md:col-span-6 md:text-2xl">{service.short}</p>
+          <p className="text-xl leading-relaxed md:col-span-6 md:text-2xl">
+            {service.short}
+          </p>
           <p className="leading-relaxed text-stone md:col-span-5 md:col-start-8">
             {service.intro}
           </p>
@@ -95,8 +107,12 @@ export default async function ServicePage({ params }: Props) {
                 delay={(n % 2) * 0.06}
                 className="border-b border-ink/15 py-8 first:pt-0 sm:[&:nth-child(2)]:pt-0"
               >
-                <p className="eyebrow text-stone">{String(n + 1).padStart(2, "0")}</p>
-                <h2 className="mt-4 text-2xl font-medium tracking-tight">{c.title}</h2>
+                <p className="eyebrow text-stone">
+                  {String(n + 1).padStart(2, "0")}
+                </p>
+                <h2 className="mt-4 text-2xl font-medium tracking-tight">
+                  {c.title}
+                </h2>
                 <p className="mt-3 leading-relaxed text-stone">{c.body}</p>
               </Reveal>
             ))}
@@ -104,15 +120,124 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
+      {service.slug === "ai-automation" && (
+        <section className="shell pb-24 md:pb-40">
+          <div className="pb-14 md:pb-20">
+            <Eyebrow className="text-stone">Python automation</Eyebrow>
+            <h2 className="display mt-6 max-w-4xl text-5xl md:text-7xl">
+              Your daily busywork,{" "}
+              <em className="text-ember">done before 9&nbsp;AM.</em>
+            </h2>
+          </div>
+          <AutomationTasks />
+        </section>
+      )}
+
+      {service.slug === "development" && (
+        <>
+          <section className="shell pb-24 md:pb-36">
+            <div className="grid gap-8 pb-14 md:grid-cols-12 md:pb-20">
+              <div className="md:col-span-7">
+                <Eyebrow className="text-stone">The difference</Eyebrow>
+                <h2 className="display mt-6 text-5xl md:text-7xl">
+                  Same-looking sites don&rsquo;t{" "}
+                  <em className="text-ember">earn trust.</em>
+                </h2>
+              </div>
+              <p className="self-end leading-relaxed text-stone md:col-span-4 md:col-start-9">
+                When every site uses the same AI template, none of them stand
+                out. Premium design is how a customer decides, in seconds, that
+                you are worth their money.
+              </p>
+            </div>
+            <VibeVsPremium />
+          </section>
+
+          <section className="bg-bone">
+            <div className="shell py-24 md:py-36">
+              <Eyebrow className="text-stone">Concept work</Eyebrow>
+              <h2 className="display mb-14 mt-6 max-w-4xl text-5xl md:mb-20 md:text-7xl">
+                Websites, apps and software that feel{" "}
+                <em className="text-ember">made for you.</em>
+              </h2>
+              <ConceptGallery />
+              <p className="mt-10 text-xs text-stone">
+                Illustrative concepts showing our design direction. Brands shown
+                are fictional.
+              </p>
+            </div>
+          </section>
+
+          <section id="ecommerce" className="shell py-24 md:py-36">
+            <div className="grid gap-8 pb-14 md:grid-cols-12 md:pb-20">
+              <div className="md:col-span-8">
+                <Eyebrow className="text-stone">E-commerce</Eyebrow>
+                <h2 className="display mt-6 text-5xl md:text-7xl">
+                  Stop paying rent on{" "}
+                  <em className="text-ember">every sale.</em>
+                </h2>
+              </div>
+              <p className="self-end leading-relaxed text-stone md:col-span-4">
+                We build your own store — with payment gateway and delivery
+                integration — so you own the checkout, the customer and the
+                margin.
+              </p>
+            </div>
+            <CommerceCompare />
+          </section>
+        </>
+      )}
+
+      {service.slug === "digital-marketing" && (
+        <section className="shell pb-24 md:pb-36">
+          <div className="grid gap-8 pb-14 md:grid-cols-12 md:pb-20">
+            <div className="md:col-span-8">
+              <Eyebrow className="text-stone">Content</Eyebrow>
+              <h2 className="display mt-6 text-5xl md:text-7xl">
+                We don&rsquo;t make boring AI reels.{" "}
+                <em className="text-ember">We make content people share.</em>
+              </h2>
+            </div>
+          </div>
+          <ViralContent />
+        </section>
+      )}
+
       <section className="bg-ink text-paper">
         <div className="shell py-24 md:py-36">
           {service.slug === "digital-marketing" && (
             <div className="pb-20 md:pb-28">
-              <Eyebrow className="text-ash">Three surfaces, one strategy</Eyebrow>
+              <Eyebrow className="text-ash">
+                Three surfaces, one strategy
+              </Eyebrow>
               <h2 className="display mb-14 mt-6 max-w-4xl text-5xl md:text-7xl">
                 Rank, answer, and <em className="text-ember">get cited.</em>
               </h2>
               <SearchShift />
+            </div>
+          )}
+
+          {service.slug === "digital-marketing" && (
+            <div className="pb-20 md:pb-28">
+              <Eyebrow className="text-ash">E-commerce marketing</Eyebrow>
+              <div className="mb-14 mt-6 grid gap-8 md:grid-cols-12">
+                <h2 className="display max-w-4xl text-5xl md:col-span-8 md:text-7xl">
+                  Grow a store you <em className="text-ember">actually own.</em>
+                </h2>
+                <p className="self-end leading-relaxed text-ash md:col-span-4">
+                  Every rupee of growth goes further when a platform isn&rsquo;t
+                  taking a cut. We pair catalogue ads, shopping campaigns and
+                  cart recovery with a custom store we build for you.
+                </p>
+              </div>
+              <CommerceCompare tone="dark" />
+              <ButtonLink
+                href="/services/development#ecommerce"
+                tone="ghost-dark"
+                className="mt-12"
+              >
+                Custom e-commerce development
+              </ButtonLink>
             </div>
           )}
 
@@ -126,7 +251,10 @@ export default async function ServicePage({ params }: Props) {
             <div className="md:col-span-6 md:col-start-7">
               <ol className="border-t border-paper/15">
                 {service.outcomes.map((o, n) => (
-                  <li key={o} className="flex gap-6 border-b border-paper/15 py-6">
+                  <li
+                    key={o}
+                    className="flex gap-6 border-b border-paper/15 py-6"
+                  >
                     <span className="eyebrow pt-1.5 text-ember">0{n + 1}</span>
                     <span className="text-lg leading-snug">{o}</span>
                   </li>

@@ -50,16 +50,22 @@ export default function Header() {
             AI Wrapper
           </Link>
 
-          <nav className="hidden items-center gap-9 md:flex" aria-label="Primary">
+          <nav
+            className="hidden items-center gap-9 md:flex"
+            aria-label="Primary"
+          >
             {links.map((l) => {
-              const active = !l.href.includes("#") && pathname.startsWith(l.href);
+              const active =
+                !l.href.includes("#") && pathname.startsWith(l.href);
               return (
                 <Link
                   key={l.href}
                   href={l.href}
                   aria-current={active ? "page" : undefined}
                   className={`link-line pb-0.5 text-[0.9375rem] transition-colors ${
-                    active ? "text-ink [background-size:100%_1px]" : "text-stone hover:text-ink"
+                    active
+                      ? "text-ink [background-size:100%_1px]"
+                      : "text-stone hover:text-ink"
                   }`}
                 >
                   {l.label}

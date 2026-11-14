@@ -8,7 +8,7 @@ import { services } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "AI automation, AI model training and new-age digital marketing — SEO, AEO, GEO, social media, Meta Ads, Google Ads, ChatGPT Ads and performance marketing.",
+    "AI and Python automation, premium web, app, software and e-commerce development, and new-age digital marketing — viral content, SEO, AEO, GEO, Meta Ads, Google Ads and ChatGPT Ads.",
   alternates: { canonical: "/services" },
 };
 
@@ -18,12 +18,14 @@ export default function ServicesPage() {
       <section className="shell pb-16 pt-40 md:pb-24 md:pt-56">
         <Eyebrow className="text-stone">Services</Eyebrow>
         <h1 className="display mt-8 max-w-5xl text-6xl md:text-8xl lg:text-9xl">
-          Everything a modern company needs to <em className="text-ember">grow and run.</em>
+          Everything a modern company needs to{" "}
+          <em className="text-ember">grow and run.</em>
         </h1>
         <p className="mt-10 max-w-2xl text-lg leading-relaxed text-stone md:text-xl">
-          Three practices that work as one. Automation gives your team time back. Trained models
-          make your product and operations smarter. Modern marketing makes sure the right people
-          find you — wherever they ask.
+          Three practices that work as one. Automation gives your team time
+          back. Development gives you a product that looks and works like a
+          premium brand. Marketing brings people to it — with content they share
+          and search that finds you wherever they ask.
         </p>
       </section>
 
@@ -34,7 +36,9 @@ export default function ServicesPage() {
               <div className="md:col-span-5">
                 <p className="eyebrow text-stone">{s.index}</p>
                 <h2 className="display mt-6 text-5xl md:text-7xl">{s.name}</h2>
-                <p className="mt-4 font-serif text-2xl italic text-stone">{s.tagline}</p>
+                <p className="mt-4 font-serif text-2xl italic text-stone">
+                  {s.tagline}
+                </p>
                 <Link
                   href={`/services/${s.slug}`}
                   className="group mt-9 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-[0.9375rem] font-medium text-paper transition-colors duration-300 hover:bg-ember"
@@ -51,7 +55,9 @@ export default function ServicesPage() {
                       key={c.title}
                       className="flex items-baseline justify-between gap-6 border-b border-ink/15 py-4"
                     >
-                      <span className="font-medium tracking-tight">{c.title}</span>
+                      <span className="font-medium tracking-tight">
+                        {c.title}
+                      </span>
                     </li>
                   ))}
                 </ul>

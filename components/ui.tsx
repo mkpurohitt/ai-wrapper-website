@@ -21,7 +21,12 @@ export function Arrow({ className = "" }: { className?: string }) {
 
 export function Mark({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
       <path
         d="M8.5 3.5C5.3 5 3.5 8.2 3.5 12s1.8 7 5 8.5M15.5 3.5c3.2 1.5 5 4.7 5 8.5s-1.8 7-5 8.5"
         stroke="currentColor"
@@ -80,7 +85,9 @@ export function JsonLd({ data }: { data: object }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data).replace(/</g, "\\u003c"),
+      }}
     />
   );
 }

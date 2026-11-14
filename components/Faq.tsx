@@ -15,7 +15,9 @@ export default function Faq({ items }: { items: FaqItem[] }) {
               <span className="absolute left-1/2 top-0 h-full w-px bg-current transition-transform duration-500 ease-expo group-open:rotate-90" />
             </span>
           </summary>
-          <p className="max-w-2xl pb-7 pr-10 leading-relaxed text-stone">{item.a}</p>
+          <p className="max-w-2xl pb-7 pr-10 leading-relaxed text-stone">
+            {item.a}
+          </p>
         </details>
       ))}
     </div>
